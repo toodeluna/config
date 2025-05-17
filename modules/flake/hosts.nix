@@ -9,12 +9,14 @@ let
     iso = [ ];
 
     nixos = [
-      inputs.disko.nixosModules.default
+      inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.default
+      inputs.disko.nixosModules.default
       "${self}/modules/nixos"
     ];
 
     darwin = [
+      inputs.agenix.darwinModules.default
       "${self}/modules/darwin"
     ];
   };
