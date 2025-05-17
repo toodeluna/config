@@ -1,0 +1,32 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [ ./hardware-configuration.nix ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "crona";
+  time.timeZone = "Europe/Brussels";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  console = {
+    useXkbConfig = true;
+  };
+
+  users.users.luna = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
+  programs.git.enable = true;
+  programs.neovim.enable = true;
+  services.openssh.enable = true;
+
+  system.stateVersion = "25.05";
+}

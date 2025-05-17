@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "easy-hosts": {
+      "locked": {
+        "lastModified": 1747174689,
+        "narHash": "sha256-WEA2HdjC90GLf5VpMLpvOF3/uSSq6AV4DQ4ezLFspc0=",
+        "owner": "tgirlcloud",
+        "repo": "easy-hosts",
+        "rev": "e1210563fc527221e12544ce55cd954acf94e7ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tgirlcloud",
+        "repo": "easy-hosts",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -38,6 +53,7 @@
     },
     "root": {
       "inputs": {
+        "easy-hosts": "easy-hosts",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "systems": "systems",

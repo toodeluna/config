@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/default";
+    easy-hosts.url = "github:tgirlcloud/easy-hosts";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
