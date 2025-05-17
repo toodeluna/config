@@ -25,10 +25,16 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
+      inputs.home-manager.follows = "home-manager";
     };
 
     catppuccin = {
       url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
