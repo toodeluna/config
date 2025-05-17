@@ -12,6 +12,7 @@
 
     ./gui/fonts.nix
 
+    ./options/gaming.nix
     ./options/gui.nix
   ];
 }

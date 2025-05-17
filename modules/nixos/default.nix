@@ -9,6 +9,8 @@
     ./core/tty.nix
     ./core/xserver.nix
 
+    ./gaming/steam.nix
+
     ./gui/fonts.nix
     ./gui/graphics.nix
     ./gui/greetd.nix

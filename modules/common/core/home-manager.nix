@@ -9,7 +9,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = "hmbackup";
+    backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs'; };
 
     users.profile.imports = [
