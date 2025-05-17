@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   config = lib.mkIf config.custom.modules.gui.enable {
     security.rtkit.enable = true;
