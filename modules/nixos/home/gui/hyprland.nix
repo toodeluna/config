@@ -30,6 +30,10 @@
         "$menu" =
           ''${pkgs.uwsm}/bin/uwsm app ${pkgs.rofi-wayland}/bin/rofi -- -show drun -run-command "${pkgs.uwsm}/bin/uwsm app \"{cmd}\""'';
 
+        exec-once = [
+          "systemctl --user enable --now hyprpaper.service"
+        ];
+
         bind = [
           "$mod, Q, killactive"
           "$mod SHIFT, Q, exit"
