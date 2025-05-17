@@ -27,5 +27,10 @@
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ./modules/flake;
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake {
+      inherit inputs;
+      specialArgs.constants = import ./constants;
+    } ./modules/flake;
 }

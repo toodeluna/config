@@ -1,4 +1,9 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  constants,
+  ...
+}:
 let
   perClassModules = {
     iso = [ ];
@@ -6,12 +11,10 @@ let
     nixos = [
       inputs.disko.nixosModules.default
       inputs.catppuccin.nixosModules.default
-      "${self}/modules/common"
       "${self}/modules/nixos"
     ];
 
     darwin = [
-      "${self}/modules/common"
       "${self}/modules/darwin"
     ];
   };
@@ -27,6 +30,8 @@ in
   easyHosts = {
     hosts.crona = mkHost "crona" "nixos" "x86_64";
 
+    shared.modules = [ "${self}/modules/common" ];
+    shared.specialArgs = { inherit constants; };
     perClass = class: { modules = perClassModules.${class}; };
   };
 }
