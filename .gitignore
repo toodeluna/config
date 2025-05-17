@@ -1,0 +1,5 @@
+# Build outputs
+/result
+
+# System files
+/.DS_Store
