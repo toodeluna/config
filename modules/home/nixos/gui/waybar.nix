@@ -1,4 +1,9 @@
-{ pkgs, lib, osConfig, ... }:
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
 {
   programs.waybar = lib.mkIf osConfig.custom.modules.gui.enable {
     enable = true;
@@ -13,7 +18,11 @@
 
       modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "custom/music" ];
-      modules-right = [ "pulseaudio" "pulseaudio/slider" "clock" ];
+      modules-right = [
+        "pulseaudio"
+        "pulseaudio/slider"
+        "clock"
+      ];
 
       "hyprland/workspaces" = {
         active-only = false;

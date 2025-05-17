@@ -1,4 +1,9 @@
-{ pkgs, osConfig, config, ... }:
+{
+  pkgs,
+  osConfig,
+  config,
+  ...
+}:
 {
   programs.git = {
     enable = true;

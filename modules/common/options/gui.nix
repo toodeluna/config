@@ -1,4 +1,9 @@
-{ self, lib, pkgs, ... }:
+{
+  self,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.custom.modules.gui = {
     enable = lib.mkEnableOption "the gui module" // {

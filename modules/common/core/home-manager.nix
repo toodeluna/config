@@ -15,7 +15,7 @@
     users.profile.imports = [
       inputs.catppuccin.homeModules.default
       inputs.zen-browser.homeModules.default
-      "${self}/modules/common/home"
+      "${self}/modules/home/common"
     ];
   };
 }

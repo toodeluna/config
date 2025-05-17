@@ -1,4 +1,9 @@
-{ pkgs, lib, osConfig, ... }:
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
 {
   gtk = lib.mkIf osConfig.custom.modules.gui.enable {
     enable = true;

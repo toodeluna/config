@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   programs.steam = lib.mkIf config.custom.modules.gaming.enable {
     enable = true;
