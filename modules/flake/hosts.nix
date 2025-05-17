@@ -13,13 +13,13 @@ let
       inputs.catppuccin.nixosModules.default
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.default
-      "${self}/modules/nixos"
+      self.nixosModules.default
     ];
 
     darwin = [
       inputs.agenix.darwinModules.default
       inputs.home-manager.darwinModules.default
-      "${self}/modules/darwin"
+      self.darwinModules.default
     ];
   };
 

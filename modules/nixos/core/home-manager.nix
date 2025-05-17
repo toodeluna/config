@@ -1,4 +1,4 @@
 { self, ... }:
 {
-  home-manager.users.profile.imports = [ "${self}/modules/home/nixos" ];
+  home-manager.users.profile.imports = [ self.homeModules.nixos ];
 }
