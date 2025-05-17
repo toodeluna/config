@@ -7,6 +7,7 @@
     ./core/profile.nix
     ./core/secrets.nix
     ./core/ssh.nix
+    ./core/sudo.nix
     ./core/version.nix
     ./core/zsh.nix
 
