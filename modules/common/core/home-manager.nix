@@ -1,8 +1,12 @@
-{ self, config, ... }:
+{ self, config, inputs, ... }:
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.profile.imports = [ "${self}/modules/common/home" ];
+
+    users.profile.imports = [
+      inputs.catppuccin.homeModules.default
+      "${self}/modules/common/home"
+    ];
   };
 }
