@@ -27,4 +27,4 @@ jobs:
       - name: Install Lix
         uses: ./.github/actions/install-lix
       - name: Check
-        runs: nix flake check
+        run: nix flake check
