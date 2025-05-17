@@ -5,6 +5,7 @@ let
 
     nixos = [
       inputs.disko.nixosModules.default
+      inputs.catppuccin.nixosModules.default
       "${self}/modules/common"
       "${self}/modules/nixos"
     ];
