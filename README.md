@@ -6,6 +6,7 @@
 
 [![NixOS Unstable](https://img.shields.io/badge/nixos-unstable-blue?style=for-the-badge&logo=nixos&logoColor=white)](https://nixos.org)
 ![GitHub repo size](https://img.shields.io/github/repo-size/toodeluna/config?style=for-the-badge&logo=github&logoColor=orange&color=orange)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/toodeluna/config/check.yml?style=for-the-badge)
 
 </div>
 
