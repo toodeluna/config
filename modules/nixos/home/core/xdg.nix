@@ -31,6 +31,9 @@ in
         "x-scheme-handler/ftp" = "zen.desktop";
         "x-scheme-handler/about" = "zen.desktop";
         "x-scheme-handler/unknown" = "zen.desktop";
+
+        "video/*" = "mpv.desktop";
+        "audio/*" = "mpv.desktop";
       };
     };
   };
