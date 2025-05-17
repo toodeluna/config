@@ -11,6 +11,7 @@
     ./core/zsh.nix
 
     ./gui/fonts.nix
+    ./gui/packages.nix
 
     ./options/gaming.nix
     ./options/gui.nix
