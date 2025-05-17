@@ -36,6 +36,8 @@ in
   };
 
   config.users.users.profile = {
+    createHome = true;
+    uid = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin 501;
     name = config.custom.profile.username;
     description = config.custom.profile.name;
     home = config.custom.profile.home;

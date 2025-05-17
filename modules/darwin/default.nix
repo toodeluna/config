@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./core/profile.nix
+  ];
+}

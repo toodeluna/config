@@ -1,13 +1,17 @@
 { self, inputs, ... }:
 let
   perClassModules = {
-    darwin = [ ];
     iso = [ ];
 
     nixos = [
       inputs.disko.nixosModules.default
       "${self}/modules/common"
       "${self}/modules/nixos"
+    ];
+
+    darwin = [
+      "${self}/modules/common"
+      "${self}/modules/darwin"
     ];
   };
 
