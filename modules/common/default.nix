@@ -8,5 +8,7 @@
     ./core/ssh.nix
     ./core/version.nix
     ./core/zsh.nix
+
+    ./options/gui.nix
   ];
 }
