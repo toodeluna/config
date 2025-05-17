@@ -2,12 +2,14 @@
   self,
   config,
   inputs,
+  inputs',
   ...
 }:
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    extraSpecialArgs = { inherit inputs'; };
 
     users.profile.imports = [
       inputs.catppuccin.homeModules.default
