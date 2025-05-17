@@ -10,6 +10,8 @@
     ./core/version.nix
     ./core/zsh.nix
 
+    ./gui/fonts.nix
+
     ./options/gui.nix
   ];
 }

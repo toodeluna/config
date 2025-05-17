@@ -9,6 +9,7 @@
     ./core/tty.nix
     ./core/xserver.nix
 
+    ./gui/fonts.nix
     ./gui/graphics.nix
     ./gui/greetd.nix
     ./gui/hyprland.nix

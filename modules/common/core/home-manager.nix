@@ -1,4 +1,9 @@
-{ self, config, inputs, ... }:
+{
+  self,
+  config,
+  inputs,
+  ...
+}:
 {
   home-manager = {
     useGlobalPkgs = true;

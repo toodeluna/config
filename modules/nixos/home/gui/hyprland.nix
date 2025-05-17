@@ -1,4 +1,9 @@
-{ pkgs, lib, osConfig, ... }:
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
 {
   config = lib.mkIf osConfig.custom.modules.gui.enable {
     catppuccin.hyprland.enable = true;
@@ -20,7 +25,8 @@
       settings = {
         "$mod" = "SUPER";
         "$terminal" = "${pkgs.uwsm}/bin/uwsm app ${pkgs.foot}/bin/foot";
-        "$menu" = ''${pkgs.uwsm}/bin/uwsm app ${pkgs.rofi-wayland}/bin/rofi -- -show drun -run-command "${pkgs.uwsm}/bin/uwsm app {cmd}"'';
+        "$menu" =
+          ''${pkgs.uwsm}/bin/uwsm app ${pkgs.rofi-wayland}/bin/rofi -- -show drun -run-command "${pkgs.uwsm}/bin/uwsm app {cmd}"'';
 
         bind = [
           "$mod, Q, killactive"
