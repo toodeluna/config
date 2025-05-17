@@ -27,6 +27,7 @@
         "$mod" = "SUPER";
         "$terminal" = "${pkgs.uwsm}/bin/uwsm app ${pkgs.foot}/bin/foot";
         "$browser" = "${pkgs.uwsm}/bin/uwsm app ${inputs'.zen-browser.packages.default}/bin/zen";
+        "$fileManager" = "${pkgs.uwsm}/bin/uwsm app ${pkgs.nemo}/bin/nemo";
         "$menu" =
           ''${pkgs.uwsm}/bin/uwsm app ${pkgs.rofi-wayland}/bin/rofi -- -show drun -run-command "${pkgs.uwsm}/bin/uwsm app \"{cmd}\""'';
 
@@ -44,6 +45,7 @@
           "$mod, return, exec, $terminal"
           "$mod, space, exec, $menu"
           "$mod, B, exec, $browser"
+          "$mod, E, exec, $fileManager"
 
           "$mod, H, movefocus, l"
           "$mod, J, movefocus, d"
