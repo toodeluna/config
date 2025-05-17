@@ -1,9 +1,14 @@
 { self, inputs, ... }:
 let
   perClassModules = {
-    nixos = [ inputs.disko.nixosModules.default ];
     darwin = [ ];
     iso = [ ];
+
+    nixos = [
+      inputs.disko.nixosModules.default
+      "${self}/modules/common"
+      "${self}/modules/nixos"
+    ];
   };
 
   mkHost = name: class: arch: {

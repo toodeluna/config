@@ -17,11 +17,6 @@
     useXkbConfig = true;
   };
 
-  users.users.luna = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
   programs.git.enable = true;
   programs.neovim.enable = true;
   services.openssh.enable = true;
