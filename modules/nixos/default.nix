@@ -9,5 +9,6 @@
 
     ./gui/graphics.nix
     ./gui/hyprland.nix
+    ./gui/pipewire.nix
   ];
 }
