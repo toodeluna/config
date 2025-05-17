@@ -34,8 +34,17 @@ in
   easyHosts = {
     hosts.crona = mkHost "crona" "nixos" "x86_64";
 
-    shared.modules = [ "${self}/modules/common" ];
-    shared.specialArgs = { inherit constants; };
-    perClass = class: { modules = perClassModules.${class}; };
+    shared.specialArgs = {
+      inherit constants;
+    };
+
+    shared.modules = [
+      inputs.lix.nixosModules.default
+      "${self}/modules/common"
+    ];
+
+    perClass = class: {
+      modules = perClassModules.${class};
+    };
   };
 }

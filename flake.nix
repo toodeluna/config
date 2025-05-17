@@ -6,6 +6,11 @@
     systems.url = "github:nix-systems/default";
     easy-hosts.url = "github:tgirlcloud/easy-hosts";
 
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
