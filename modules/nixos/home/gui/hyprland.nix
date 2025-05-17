@@ -30,6 +30,7 @@
 
       exec-once = [
         "systemctl --user enable --now hyprpaper.service"
+        "${pkgs.waybar}/bin/waybar"
       ];
 
       bind = [
