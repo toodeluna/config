@@ -19,6 +19,7 @@ let
     darwin = [
       inputs.agenix.darwinModules.default
       inputs.home-manager.darwinModules.default
+      inputs.homebrew.darwinModules.nix-homebrew
       self.darwinModules.default
     ];
   };
@@ -33,6 +34,7 @@ in
 
   easyHosts = {
     hosts.crona = mkHost "crona" "nixos" "x86_64";
+    hosts.excalibur = mkHost "excalibur" "darwin" "aarch64";
 
     shared.specialArgs = {
       inherit constants;

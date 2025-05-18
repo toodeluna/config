@@ -8,5 +8,6 @@
   environment.systemPackages = lib.mkIf config.custom.modules.gui.enable [
     pkgs.stremio
     pkgs.nemo
+    pkgs.signal-desktop
   ];
 }
