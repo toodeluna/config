@@ -17,5 +17,6 @@
 
   flake.homeModules.darwin.imports = [
     "${self}/modules/home/common"
+    "${self}/modules/home/darwin"
   ];
 }
