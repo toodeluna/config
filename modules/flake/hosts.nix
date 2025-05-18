@@ -36,17 +36,8 @@ in
     hosts.crona = mkHost "crona" "nixos" "x86_64";
     hosts.excalibur = mkHost "excalibur" "darwin" "aarch64";
 
-    shared.specialArgs = {
-      inherit constants;
-    };
-
-    shared.modules = [
-      inputs.lix.nixosModules.default
-      "${self}/modules/common"
-    ];
-
-    perClass = class: {
-      modules = perClassModules.${class};
-    };
+    shared.specialArgs = { inherit constants; };
+    shared.modules = [ inputs.lix.nixosModules.default ];
+    perClass = class: { modules = perClassModules.${class}; };
   };
 }
