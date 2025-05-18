@@ -19,6 +19,7 @@
     - [Repository](#repository)
     - [Configurations](#configurations)
     - [Modules](#modules)
+  - [Installation](#installation)
   - [Further Reading](#further-reading)
     - [Other People's Configurations](#other-peoples-configurations)
     - [Interesting Websites](#interesting-websites)
@@ -56,6 +57,52 @@ anyone reading this and for future me who might forget how parts of this work be
 - [darwin](./modules/darwin/): Modules for Nix Darwin.
 - [home/common](./modules/home/common/): Home manager modules for NixOS and Nix Darwin.
 - [home/nixos](./modules/home/nixos/): Home manager modules for NixOS.
+
+## Installation
+
+In order to install the configuration on a new system a few steps must be taken, mainly due to
+the fact the configuration uses Age encrypted secrets that the system must first be given access
+to. It's a bit of a chicken-and-egg-problem since you already need a system with the configuration
+on it in order to install it on a separate system. I might look for ways to improve this in the
+future, but it's fine for now because again: this is pretty much only made for my own use.
+
+To start of: make sure you have a system with NixOS or Nix Darwin installed on it. Then generate an
+SSH key-pair on this system. Then, on the machine that already has the configuration on it, open
+the [constants/ssh-keys.nix](./constants/ssh-keys.nix) file and add the new machine's public key
+to it like so:
+
+```nix
+{
+  newMachine = {
+    root = "<root_public_ssh_key>";
+    user = "<user_public_ssh_key>";
+  };
+}
+```
+
+Then `cd` into the [secrets](./secrets/) directory and give the new machine access to the secrets
+that it needs to set up the system by adding it to the [secrets.nix](./secrets/secrets.nix) file.
+Then use the agenix command line tool to rekey the secrets.
+
+```sh
+$ agenix -r
+```
+
+After that you can add a new configuration to the [configurations](./configurations/) directory
+and add it to the [hosts.nix](./modules/flake/hosts.nix) file. Make sure to push all these changes
+to GitHub.
+
+Then, on the target system, clone this repository, ideally into your home directory under
+`github/toodeluna/config` on Linux or `GitHub/toodeluna/config` on MacOS. Then `cd` into it
+and run the following command:
+
+```sh
+# On NixOS:
+$ sudo nixos-rebuild switch --flake .
+
+# On MacOS:
+$ darwin-rebuild switch --flake .
+```
 
 ## Further Reading
 
