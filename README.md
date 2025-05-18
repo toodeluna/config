@@ -2,7 +2,7 @@
 
 # Config
 
-![Blajah Go Spin](./assets/gifs/blahaj.gif)
+![Blahaj Go Spin](./assets/gifs/blahaj.gif)
 
 [![NixOS Unstable](https://img.shields.io/badge/nixos-unstable-blue?style=for-the-badge&logo=nixos&logoColor=white)](https://nixos.org)
 ![GitHub repo size](https://img.shields.io/github/repo-size/toodeluna/config?style=for-the-badge&logo=github&logoColor=orange&color=orange)
@@ -47,6 +47,7 @@ anyone reading this and for future me who might forget how parts of this work be
 ### Configurations
 
 - [crona](./configurations/crona/): My desktop that I use for gaming and personal projects.
+- [excalibur](./configurations/excalibur/): My MacBook that I use for work.
 
 ### Modules
 
