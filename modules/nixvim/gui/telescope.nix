@@ -5,7 +5,11 @@
 
   plugins.telescope = {
     enable = true;
-    extensions.file-browser.enable = true;
+
+    extensions.file-browser = {
+      enable = true;
+      settings.grouped = true;
+    };
 
     keymaps = {
       "<leader>fp".action = "find_files";
