@@ -1,0 +1,29 @@
+name: Update flake
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "18 0 * * 5"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Lix
+        uses: ./.github/actions/install-lix
+      - name: Update flake
+        run: nix flake update
+      - name: Create PR
+        id: pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: "chore: update flake"
+          commit-message: "chore: update flake"
+          branch: chore/update-flake
