@@ -8,6 +8,7 @@
     ./gui/noice.nix
     ./gui/oil.nix
     ./gui/telescope.nix
+    ./gui/trouble.nix
 
     ./languages/conform.nix
     ./languages/lsp.nix
