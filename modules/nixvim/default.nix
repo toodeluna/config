@@ -4,6 +4,7 @@
     ./core/opts.nix
 
     ./gui/colorscheme.nix
+    ./gui/neo-tree.nix
     ./gui/noice.nix
     ./gui/oil.nix
     ./gui/telescope.nix
