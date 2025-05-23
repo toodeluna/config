@@ -7,6 +7,7 @@
     ./core/version.nix
     ./core/zsh.nix
 
+    ./gui/mpv.nix
     ./gui/zen.nix
   ];
 }
