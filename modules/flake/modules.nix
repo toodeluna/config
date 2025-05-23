@@ -19,4 +19,8 @@
     "${self}/modules/home/common"
     "${self}/modules/home/darwin"
   ];
+
+  flake.nixvimModules.default.imports = [
+    "${self}/modules/nixvim"
+  ];
 }

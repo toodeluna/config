@@ -80,6 +80,13 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs =
