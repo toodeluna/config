@@ -1,0 +1,10 @@
+# Editor files
+/.idea
+/.vs
+/.vscode
+
+# Build outputs
+/result
+
+# System files
+.DS_Store

@@ -1,0 +1,2 @@
+# Don't show diffs for lockfiles
+flake.lock -diff
