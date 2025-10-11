@@ -1,0 +1,21 @@
+name: Check flake lockfile
+
+on:
+  push:
+    paths:
+      - "flake.lock"
+      - ".github/workflows/check.yml"
+      - ".github/actions/**/*"
+
+jobs:
+  check-lockfile:
+    name: Check flake lockfile
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Install Lix
+        uses: ./.github/actions/install-lix
+      - name: Check flake lockfile
+        run: nix run github:tgirlcloud/locker

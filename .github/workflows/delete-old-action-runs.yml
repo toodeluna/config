@@ -1,0 +1,19 @@
+name: Delete old action runs
+
+on:
+  schedule:
+    - cron: "0 20 * * 0"
+
+jobs:
+  delete-old-action-runs:
+    name: Delete old action runs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Delete old action runs
+        uses: yanovation/delete-old-actions@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          days-ago: 14
