@@ -12,9 +12,4 @@
 
   programs.git.enable = true;
   programs.neovim.enable = true;
-
-  users.users.luna = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
 }

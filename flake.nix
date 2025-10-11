@@ -9,6 +9,11 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/default";
 
+    darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
