@@ -31,6 +31,7 @@
         ];
 
         packages = [
+          inputs'.agenix.packages.default
           inputs'.locker.packages.default
           pkgs.cocogitto
           pkgs.git

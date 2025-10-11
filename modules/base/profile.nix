@@ -38,8 +38,13 @@
       };
     };
 
-  flake.modules.nixos.base.users.users.profile = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
+  flake.modules.nixos.base =
+    { config, ... }:
+    {
+      users.users.profile = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        hashedPasswordFile = config.age.secrets.password.path;
+      };
+    };
 }
