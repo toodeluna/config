@@ -6,5 +6,9 @@
 # Build outputs
 /result
 
+# Environment files
+.direnv
+*.env
+
 # System files
 .DS_Store
