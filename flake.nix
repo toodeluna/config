@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    locker = {
+      url = "github:tgirlcloud/locker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

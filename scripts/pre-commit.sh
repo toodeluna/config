@@ -2,4 +2,5 @@
 
 set -e
 
+locker
 nix flake check

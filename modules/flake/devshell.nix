@@ -1,7 +1,12 @@
 { self, lib, ... }:
 {
   perSystem =
-    { pkgs, self', ... }:
+    {
+      inputs',
+      pkgs,
+      self',
+      ...
+    }:
     {
       devshells.default = {
         devshell = {
@@ -26,6 +31,7 @@
         ];
 
         packages = [
+          inputs'.locker.packages.default
           pkgs.cocogitto
           pkgs.git
           pkgs.lix
