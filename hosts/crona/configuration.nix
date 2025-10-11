@@ -1,6 +1,4 @@
 {
-  system.stateVersion = "25.05";
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -14,11 +12,6 @@
 
   programs.git.enable = true;
   programs.neovim.enable = true;
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   users.users.luna = {
     isNormalUser = true;
