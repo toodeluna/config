@@ -1,0 +1,14 @@
+[changelog]
+path = "CHANGELOG.md"
+template = "remote"
+remote = "github.com"
+owner = "toodeluna"
+repository = "config"
+
+[[changelog.authors]]
+signature = "luna.heyman@proton.me"
+username = "toodeluna"
+
+[git_hooks]
+commit-msg.path = "./scripts/commit-msg.sh"
+pre-commit.path = "./scripts/pre-commit.sh"
