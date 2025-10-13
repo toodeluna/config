@@ -1,0 +1,14 @@
+# Editor files
+/.idea
+/.vs
+/.vscode
+
+# Output files
+/result
+
+# Environment files
+/.direnv
+*.env
+
+# System files
+.DS_Store
