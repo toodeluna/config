@@ -8,6 +8,10 @@ let
     inputs.homebrew.darwinModules.nix-homebrew
   ];
 
+  modules.nixos = [
+    inputs.disko.nixosModules.default
+  ];
+
   mkHost = name: arch: class: {
     inherit arch class;
     modules = [ (inputs.import-tree "${self}/hosts/${name}") ];
@@ -15,6 +19,7 @@ let
 in
 {
   easy-hosts = {
+    hosts.crona = mkHost "crona" "x86_64" "nixos";
     hosts.excalibur = mkHost "excalibur" "aarch64" "darwin";
 
     shared.modules = modules.shared;
