@@ -7,6 +7,11 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/default";
 
+    locker = {
+      url = "github:tgirlcloud/locker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
