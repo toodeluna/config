@@ -4,11 +4,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console.useXkbConfig = true;
 
-  system = {
-    stateVersion = "25.05";
-    configurationRevision = self.rev or self.dirtRev or null;
-  };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -22,30 +17,6 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-    };
-  };
-
-  nixpkgs.config = {
-    allowAliases = false;
-    allowUnfree = true;
-  };
-
-  nix = {
-    channel.enable = false;
-    optimise.automatic = true;
-
-    settings = {
-      keep-going = true;
-      warn-dirty = false;
-      use-xdg-base-directories = true;
-
-      trusted-users = [ "@wheel" ];
-      allowed-users = [ "@wheel" ];
-
-      experimental-features = [
-        "flakes"
-        "nix-command"
-      ];
     };
   };
 

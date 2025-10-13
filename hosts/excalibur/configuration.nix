@@ -9,32 +9,6 @@
 {
   system = {
     primaryUser = "luna";
-    stateVersion = 6;
-    configurationRevision = self.rev or self.dirtRev or null;
-  };
-
-  nixpkgs.config = {
-    allowAliases = false;
-    allowUnfree = true;
-  };
-
-  nix = {
-    channel.enable = false;
-    optimise.automatic = true;
-
-    settings = {
-      keep-going = true;
-      warn-dirty = false;
-      use-xdg-base-directories = true;
-
-      trusted-users = [ "@admin" ];
-      allowed-users = [ "@admin" ];
-
-      experimental-features = [
-        "flakes"
-        "nix-command"
-      ];
-    };
   };
 
   nix-homebrew = {

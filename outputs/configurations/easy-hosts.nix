@@ -6,10 +6,12 @@ let
 
   modules.darwin = [
     inputs.homebrew.darwinModules.nix-homebrew
+    self.darwinModules.default
   ];
 
   modules.nixos = [
     inputs.disko.nixosModules.default
+    self.nixosModules.default
   ];
 
   mkHost = name: arch: class: {
