@@ -121,6 +121,28 @@
         "type": "github"
       }
     },
+    "firefox-addons": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "pkgs/firefox-addons",
+        "lastModified": 1760432159,
+        "narHash": "sha256-JIJnj+iXMRQSYJImEB4NDl0/SINMl15dG03YfEG+MEg=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "435c7a1ce417f375269a04ec2a70fa53dcf6c36d",
+        "type": "gitlab"
+      },
+      "original": {
+        "dir": "pkgs/firefox-addons",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "type": "gitlab"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -368,6 +390,7 @@
         "devshell": "devshell",
         "disko": "disko",
         "easy-hosts": "easy-hosts",
+        "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "homebrew": "homebrew",
@@ -379,7 +402,8 @@
         "locker": "locker",
         "nixpkgs": "nixpkgs",
         "systems": "systems",
-        "treefmt": "treefmt"
+        "treefmt": "treefmt",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -414,6 +438,29 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760426393,
+        "narHash": "sha256-wKiqhDgXwicdVNSJGwJPeTxnNPhzKcy9RqptzFcdFe4=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "0618a22e6fb6f13181807f0e14087192d459b2a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

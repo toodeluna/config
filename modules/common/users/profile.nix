@@ -1,8 +1,9 @@
 {
+  config,
+  inputs,
+  lib,
   pkgs,
   self,
-  lib,
-  config,
   ...
 }:
 let
@@ -41,8 +42,9 @@ in
       home = "/${home}/${profile.username}";
     };
 
-    home-manager = {
-      users.profile = self.homeModules.default;
-    };
+    home-manager.users.profile.imports = [
+      inputs.zen-browser.homeModules.default
+      self.homeModules.default
+    ];
   };
 }
