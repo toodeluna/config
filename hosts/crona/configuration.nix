@@ -20,10 +20,7 @@
     };
   };
 
-  users.users.luna = {
-    isNormalUser = true;
-    description = "Luna Heyman";
-    extraGroups = [ "wheel" ];
+  users.users.profile = {
     shell = pkgs.zsh;
   };
 

@@ -7,10 +7,6 @@
   ...
 }:
 {
-  system = {
-    primaryUser = "luna";
-  };
-
   nix-homebrew = {
     enable = true;
     enableRosetta = true;
@@ -44,14 +40,7 @@
   };
 
   users = {
-    knownUsers = [
-      "luna"
-    ];
-
-    users.luna = {
-      uid = 501;
-      description = "Luna Heyman";
-      createHome = true;
+    users.profile = {
       shell = pkgs.zsh;
     };
   };
