@@ -4,16 +4,12 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console.useXkbConfig = true;
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  soul.hardware = {
+    graphics.enable = true;
+    amdgpu.enable = true;
   };
 
   boot = {
-    initrd = {
-      kernelModules = [ "amdgpu" ];
-    };
-
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -30,10 +26,6 @@
   };
 
   services.xserver = {
-    videoDrivers = [
-      "amdgpu"
-    ];
-
     xkb = {
       layout = "us";
       options = "caps:escape";
