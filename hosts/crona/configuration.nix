@@ -9,8 +9,6 @@
   programs = {
     lazygit.enable = true;
     neovim.enable = true;
-    nh.enable = true;
-    zsh.enable = true;
   };
 
   programs.hyprland = {

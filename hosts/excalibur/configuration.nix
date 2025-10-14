@@ -20,7 +20,6 @@
     systemPackages = [
       pkgs.lazygit
       pkgs.neovim
-      pkgs.nh
       pkgs.raycast
       pkgs.vscode
     ];
