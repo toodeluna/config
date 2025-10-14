@@ -22,6 +22,7 @@ in
         "zen.view.experimental-rounded-view" = false;
         "zen.view.use-single-toolbar" = false;
         "zen.welcome-screen.seen" = true;
+        "zen.workspaces.open-new-tab-if-last-unpinned-tab-is-closed" = true;
       };
 
       extensions = {
