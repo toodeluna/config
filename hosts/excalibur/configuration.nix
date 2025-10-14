@@ -15,18 +15,7 @@
     "zen"
   ];
 
-  users = {
-    users.profile = {
-      shell = pkgs.zsh;
-    };
-  };
-
   environment = {
-    shells = [
-      pkgs.bashInteractive
-      pkgs.zsh
-    ];
-
     systemPackages = [
       pkgs.ghostty-bin
       pkgs.git
@@ -36,10 +25,6 @@
       pkgs.raycast
       pkgs.vscode
     ];
-  };
-
-  programs = {
-    zsh.enable = true;
   };
 
   fonts.packages = [

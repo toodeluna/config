@@ -16,10 +16,6 @@
     };
   };
 
-  users.users.profile = {
-    shell = pkgs.zsh;
-  };
-
   services = {
     pipewire.enable = true;
     openssh.enable = true;
@@ -49,11 +45,6 @@
     variables = {
       NIXOS_OZONE_WL = "1";
     };
-
-    shells = [
-      pkgs.bashInteractive
-      pkgs.zsh
-    ];
 
     systemPackages = [
       pkgs.discord
