@@ -6,11 +6,13 @@ let
 
   modules.darwin = [
     inputs.homebrew.darwinModules.nix-homebrew
+    inputs.home-manager.darwinModules.default
     self.darwinModules.default
   ];
 
   modules.nixos = [
     inputs.disko.nixosModules.default
+    inputs.home-manager.nixosModules.default
     self.nixosModules.default
   ];
 

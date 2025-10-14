@@ -1,6 +1,17 @@
-{ lib, config, ... }:
+{
+  pkgs,
+  self,
+  lib,
+  config,
+  ...
+}:
 let
   inherit (config.soul) profile;
+
+  home = self.lib.conditional pkgs {
+    linux = "home";
+    darwin = "Users";
+  };
 in
 {
   options.soul.profile = {
@@ -15,10 +26,23 @@ in
       type = lib.types.str;
       default = "Luna Heyman";
     };
+
+    email = lib.mkOption {
+      description = "The email address of the main user.";
+      type = lib.types.str;
+      default = "luna.heyman@proton.me";
+    };
   };
 
-  config.users.users.profile = {
-    name = profile.username;
-    description = profile.name;
+  config = {
+    users.users.profile = {
+      name = profile.username;
+      description = profile.name;
+      home = "/${home}/${profile.username}";
+    };
+
+    home-manager = {
+      users.profile = self.homeModules.default;
+    };
   };
 }

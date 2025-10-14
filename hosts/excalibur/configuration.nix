@@ -8,6 +8,7 @@
 }:
 {
   soul.casks = [
+    "ghostty"
     "google-chrome"
     "microsoft-outlook"
     "microsoft-teams"
@@ -17,8 +18,6 @@
 
   environment = {
     systemPackages = [
-      pkgs.ghostty-bin
-      pkgs.git
       pkgs.lazygit
       pkgs.neovim
       pkgs.nh

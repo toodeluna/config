@@ -29,7 +29,6 @@
   };
 
   programs = {
-    git.enable = true;
     lazygit.enable = true;
     neovim.enable = true;
     nh.enable = true;
