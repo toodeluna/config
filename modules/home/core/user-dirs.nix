@@ -12,7 +12,7 @@
     music = "${config.home.homeDirectory}/music";
     desktop = "${config.home.homeDirectory}/desktop";
     documents = "${config.home.homeDirectory}/documents";
-    download = "${config.home.homeDirectory}/download";
+    download = "${config.home.homeDirectory}/downloads";
     pictures = "${config.home.homeDirectory}/pictures";
     publicShare = "${config.home.homeDirectory}/public";
     templates = "${config.home.homeDirectory}/templates";
