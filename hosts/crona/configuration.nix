@@ -6,6 +6,10 @@
     graphics.enable = true;
   };
 
+  soul.theme = {
+    wallpaper = "${self}/assets/wallpapers/catppuccin-blossoms.png";
+  };
+
   programs = {
     lazygit.enable = true;
     neovim.enable = true;

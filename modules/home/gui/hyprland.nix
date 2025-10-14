@@ -2,6 +2,7 @@
   lib,
   pkgs,
   osConfig,
+  config,
   ...
 }:
 let
@@ -38,6 +39,10 @@ in
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
       };
+
+      exec-once = lib.mkIf (config.services.hyprpaper.enable) [
+        "systemctl --user enable --now hyprpaper.service"
+      ];
 
       windowrule = [
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
