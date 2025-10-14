@@ -1,31 +1,9 @@
 { self, pkgs, ... }:
 {
-  time.timeZone = "Europe/Brussels";
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.useXkbConfig = true;
-
   soul.hardware = {
-    graphics.enable = true;
     amdgpu.enable = true;
-  };
-
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
-
-  services = {
-    pipewire.enable = true;
-    openssh.enable = true;
-  };
-
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      options = "caps:escape";
-    };
+    audio.enable = true;
+    graphics.enable = true;
   };
 
   programs = {
