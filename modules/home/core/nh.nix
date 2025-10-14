@@ -1,4 +1,9 @@
-{ self, config, pkgs, ... }:
+{
+  self,
+  config,
+  pkgs,
+  ...
+}:
 let
   githubDirectory = self.lib.conditional pkgs {
     linux = "github";

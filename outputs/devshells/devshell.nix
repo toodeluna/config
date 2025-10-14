@@ -8,8 +8,9 @@
         };
 
         packages = [
-          pkgs.lix
+          pkgs.agenix
           pkgs.git
+          pkgs.lix
         ];
 
         packagesFrom = [

@@ -5,12 +5,14 @@ let
   ];
 
   modules.darwin = [
+    inputs.agenix.darwinModules.default
     inputs.homebrew.darwinModules.nix-homebrew
     inputs.home-manager.darwinModules.default
     self.darwinModules.default
   ];
 
   modules.nixos = [
+    inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.default
     inputs.home-manager.nixosModules.default
     self.nixosModules.default
