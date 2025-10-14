@@ -7,37 +7,13 @@
   ...
 }:
 {
-  nix-homebrew = {
-    enable = true;
-    enableRosetta = true;
-    mutableTaps = false;
-    user = "luna";
-
-    taps = {
-      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-    };
-  };
-
-  homebrew = {
-    enable = true;
-    taps = lib.attrNames config.nix-homebrew.taps;
-
-    onActivation = {
-      upgrade = true;
-      autoUpdate = true;
-      cleanup = "zap";
-    };
-
-    casks = [
-      "google-chrome"
-      "microsoft-outlook"
-      "microsoft-teams"
-      "spotify"
-      "zen"
-    ];
-  };
+  soul.casks = [
+    "google-chrome"
+    "microsoft-outlook"
+    "microsoft-teams"
+    "spotify"
+    "zen"
+  ];
 
   users = {
     users.profile = {
