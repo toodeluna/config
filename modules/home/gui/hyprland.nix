@@ -40,6 +40,10 @@ in
         disable_hyprland_logo = true;
       };
 
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
       exec-once = lib.mkIf (config.services.hyprpaper.enable) [
         "systemctl --user enable --now hyprpaper.service"
       ];

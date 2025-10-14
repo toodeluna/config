@@ -10,16 +10,17 @@
     wallpaper = "${self}/assets/wallpapers/catppuccin-blossoms.png";
   };
 
+  soul.gaming = {
+    enable = true;
+    steam.enable = true;
+  };
+
   programs = {
     lazygit.enable = true;
     neovim.enable = true;
   };
 
   environment = {
-    systemPackages = [
-      pkgs.discord
-      pkgs.ghostty
-      pkgs.rofi
-    ];
+    systemPackages = [ pkgs.discord ];
   };
 }
