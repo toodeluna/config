@@ -24,9 +24,4 @@
       pkgs.vscode
     ];
   };
-
-  fonts.packages = [
-    pkgs.nerd-fonts.fira-code
-    pkgs.work-sans
-  ];
 }

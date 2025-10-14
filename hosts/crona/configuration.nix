@@ -18,13 +18,4 @@
       pkgs.rofi
     ];
   };
-
-  fonts.packages = [
-    pkgs.nerd-fonts.fira-code
-    pkgs.noto-fonts
-    pkgs.noto-fonts-cjk-sans
-    pkgs.noto-fonts-cjk-serif
-    pkgs.noto-fonts-color-emoji
-    pkgs.work-sans
-  ];
 }
