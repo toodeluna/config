@@ -15,5 +15,10 @@
     systems = {
       url = "github:nix-systems/default";
     };
+
+    tgirlpkgs = {
+      url = "github:tgirlcloud/pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

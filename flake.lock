@@ -40,7 +40,8 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
-        "systems": "systems"
+        "systems": "systems",
+        "tgirlpkgs": "tgirlpkgs"
       }
     },
     "systems": {
@@ -55,6 +56,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tgirlpkgs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772759414,
+        "narHash": "sha256-/05pkrJKviZ4Y7/xs8SFnRDqJfFe1FAVRBRZ5rJyENE=",
+        "owner": "tgirlcloud",
+        "repo": "pkgs",
+        "rev": "8d54eb84c9348acf0be78f7d2269b17d5f7bf916",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tgirlcloud",
+        "repo": "pkgs",
         "type": "github"
       }
     }
