@@ -139,8 +139,8 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "home-manager-backup";
-    users.luna = ./home.nix;
     sharedModules = [ inputs.zen-browser.homeModules.default ];
+    users.luna = ./home.nix;
   };
 
   programs.bash.interactiveShellInit = ''

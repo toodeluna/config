@@ -3,6 +3,11 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ./flake;
 
   inputs = {
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     easy-hosts = {
       url = "github:tgirlcloud/easy-hosts";
     };

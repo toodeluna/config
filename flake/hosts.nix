@@ -13,6 +13,7 @@ let
   ];
 
   modules.nixos = [
+    inputs.disko.nixosModules.default
     inputs.home-manager.nixosModules.default
     inputs.lix-module.nixosModules.default
   ];
@@ -21,6 +22,12 @@ in
   imports = [ inputs.easy-hosts.flakeModule ];
 
   easy-hosts = {
+    hosts.crona = {
+      class = "nixos";
+      arch = "x86_64";
+      path = "${self}/hosts/crona";
+    };
+
     hosts.excalibur = {
       class = "darwin";
       arch = "aarch64";
