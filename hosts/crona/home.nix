@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -132,7 +133,19 @@
     };
   };
 
+  programs.quickshell = {
+    enable = true;
+    activeConfig = "default";
+    configs.default = "${self}/quickshell";
+  };
+
+  xdg.configFile."quickshell/config.json".text = builtins.toJSON {
+    wallpaper = "${self}/wallpapers/link-click.jpg";
+  };
+
   xdg.configFile."niri/config.kdl".text = ''
+    spawn-sh-at-startup "${lib.getExe pkgs.quickshell} -c ${config.programs.quickshell.activeConfig}"
+
     prefer-no-csd
     screenshot-path "${config.home.homeDirectory}/pictures/screenshots/%Y-%m-%d_%H-%M-%S.png"
 

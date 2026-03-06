@@ -1,10 +1,12 @@
 {
   treefmt,
+  kdePackages,
   nixfmt,
   prettier,
 }:
 treefmt.withConfig {
   runtimeInputs = [
+    kdePackages.qtdeclarative
     nixfmt
     prettier
   ];
@@ -20,6 +22,12 @@ treefmt.withConfig {
     formatter.prettier = {
       command = "prettier";
       includes = [ "*.md" ];
+    };
+
+    formatter.qmlformat = {
+      command = "qmlformat";
+      options = [ "-i" ];
+      includes = [ "*.qml" ];
     };
   };
 }
