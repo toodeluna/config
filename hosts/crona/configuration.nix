@@ -140,7 +140,6 @@ in
 
             "capture.props" = {
               "node.name" = "capture.rnnoise_source";
-              "node.passive" = true;
               "audio.rate" = 48000;
             };
 
