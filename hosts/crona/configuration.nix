@@ -21,7 +21,10 @@ in
   programs.niri.enable = true;
   programs.fish.enable = true;
   programs.git.enable = true;
+  programs.bash.interactiveShellInit = ''exec "${lib.getExe pkgs.nushell}"'';
+
   services.openssh.enable = true;
+  services.resolved.enable = true;
 
   security.sudo.extraConfig = "Defaults env_reset,pwfeedback";
   security.rtkit.enable = true;
@@ -80,12 +83,6 @@ in
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
   };
-
-  programs.bash.interactiveShellInit = ''
-    if [[ $- == *i* ]]; then
-      exec "${lib.getExe pkgs.nushell}"
-    fi
-  '';
 
   programs.nh = {
     enable = true;
@@ -165,6 +162,20 @@ in
     settings.default_session = {
       users = "greeter";
       command = ''${lib.getExe pkgs.tuigreet} --asterisks --sessions "${desktops}/share/wayland-sessions"'';
+    };
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    ipv4 = true;
+    ipv6 = true;
+    openFirewall = true;
+
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = true;
     };
   };
 
