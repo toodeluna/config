@@ -22,6 +22,12 @@ in
   imports = [ inputs.easy-hosts.flakeModule ];
 
   easy-hosts = {
+    hosts.blackstar = {
+      class = "nixos";
+      arch = "x86_64";
+      path = "${self}/hosts/blackstar";
+    };
+
     hosts.crona = {
       class = "nixos";
       arch = "x86_64";
