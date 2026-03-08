@@ -101,6 +101,9 @@
     profiles.default = {
       name = "Default";
       isDefault = true;
+      containersForce = true;
+      spacesForce = true;
+      pinsForce = true;
 
       settings = {
         "extensions.autoDisableScopes" = false;
@@ -125,10 +128,59 @@
           pkgs.firefox-addons.return-youtube-dislikes
           pkgs.firefox-addons.shinigami-eyes
           pkgs.firefox-addons.sponsorblock
+          pkgs.firefox-addons.stylus
           pkgs.firefox-addons.ublock-origin
           pkgs.firefox-addons.yomitan
           pkgs.firefox-addons.youtube-shorts-block
         ];
+      };
+
+      containers = {
+        personal = {
+          color = "purple";
+          icon = "fingerprint";
+          id = 1;
+        };
+      };
+
+      spaces = {
+        personal = {
+          id = "e01fd107-501e-4761-8638-eab2243247ea";
+          position = 1000;
+          container = config.programs.zen-browser.profiles.default.containers.personal.id;
+
+          theme.colors = lib.singleton {
+            red = 24;
+            green = 24;
+            blue = 37;
+          };
+        };
+      };
+
+      pins = {
+        "YouTube" = {
+          id = "6eac9454-77d9-47db-888a-07b9355652ac";
+          container = config.programs.zen-browser.profiles.default.containers.personal.id;
+          url = "https://www.youtube.com";
+          isEssential = true;
+          position = 101;
+        };
+
+        "Catsky" = {
+          id = "f86333e0-a714-4d10-9d05-6ec6b84e29ba";
+          container = config.programs.zen-browser.profiles.default.containers.personal.id;
+          url = "https://catsky.social";
+          isEssential = true;
+          position = 102;
+        };
+
+        "GitHub" = {
+          id = "3b36d7ee-879e-470e-b908-e2215b1d6c39";
+          container = config.programs.zen-browser.profiles.default.containers.personal.id;
+          url = "https://github.com";
+          isEssential = true;
+          position = 103;
+        };
       };
     };
   };
