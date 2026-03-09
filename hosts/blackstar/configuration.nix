@@ -1,7 +1,8 @@
 {
   config,
-  self,
   keys,
+  lib,
+  self,
   ...
 }:
 {
@@ -68,13 +69,48 @@
     clean.enable = true;
   };
 
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
+
   services.xserver.xkb = {
     layout = "us";
     options = "caps:escape";
   };
 
+  services.anki-sync-server = {
+    enable = true;
+    address = "127.0.0.1";
+
+    users = lib.singleton {
+      username = "luna@toodeluna.net";
+      passwordFile = config.age.secrets.anki-password-luna.path;
+    };
+  };
+
+  services.nginx = {
+    enable = true;
+
+    virtualHosts."anki.toodeluna.net" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "http://${config.services.anki-sync-server.address}:${toString config.services.anki-sync-server.port}";
+        proxyWebsockets = true;
+      };
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "luna@toodeluna.net";
+  };
+
   age.secrets = {
     password.file = "${self}/secrets/blackstar/password.age";
+    anki-password-luna.file = "${self}/secrets/blackstar/anki/luna.age";
   };
 
   users.users.luna = {

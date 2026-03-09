@@ -9,4 +9,9 @@ with import ./keys.nix;
     blackstar.root
     blackstar.luna
   ];
+
+  "blackstar/anki/luna.age".publicKeys = [
+    blackstar.root
+    blackstar.luna
+  ];
 }

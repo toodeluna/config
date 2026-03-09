@@ -10,7 +10,6 @@
   home.stateVersion = "25.05";
   home.preferXdgDirectories = true;
 
-  programs.anki.enable = true;
   programs.carapace.enable = true;
   programs.home-manager.enable = true;
   programs.nix-your-shell.enable = true;
@@ -27,6 +26,11 @@
     name = "Bibata-Modern-Ice";
     package = pkgs.bibata-cursors;
     size = 24;
+  };
+
+  programs.anki = {
+    enable = true;
+    profiles.luna.sync.url = "https://anki.toodeluna.net";
   };
 
   programs.ghostty = {

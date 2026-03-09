@@ -19,6 +19,10 @@ let
     inputs.home-manager.nixosModules.default
     inputs.lix-module.nixosModules.default
   ];
+
+  modules.iso = [
+    inputs.lix-module.nixosModules.default
+  ];
 in
 {
   imports = [ inputs.easy-hosts.flakeModule ];
@@ -54,7 +58,7 @@ in
     };
 
     perClass = class: {
-      modules = modules.${class} or [ ];
+      modules = lib.getAttr class modules;
     };
   };
 

@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, lib, ... }:
 {
   time.timeZone = "Europe/Brussels";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -19,6 +19,11 @@
   system = {
     stateVersion = "26.06";
     configurationRevision = self.rev or self.dirtRev or null;
+  };
+
+  image = {
+    baseName = lib.mkImageMediaOverride "soul";
+    extension = "iso";
   };
 
   nix = {
