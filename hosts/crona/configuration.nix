@@ -29,6 +29,8 @@ in
   security.sudo.extraConfig = "Defaults env_reset,pwfeedback";
   security.rtkit.enable = true;
 
+  users.mutableUsers = false;
+
   environment.defaultPackages = [ ];
   fonts.enableDefaultPackages = false;
 
@@ -179,9 +181,14 @@ in
     };
   };
 
+  age.secrets = {
+    password.file = "${self}/secrets/crona/password.age";
+  };
+
   users.users.luna = {
     isNormalUser = true;
     description = "Luna Heyman";
+    hashedPasswordFile = config.age.secrets.password.path;
 
     extraGroups = [
       "audio"
@@ -189,6 +196,10 @@ in
       "video"
       "wheel"
     ];
+  };
+
+  users.users.root = {
+    hashedPasswordFile = config.age.secrets.password.path;
   };
 
   fonts.fontconfig.defaultFonts = {

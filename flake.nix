@@ -3,6 +3,14 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ./flake;
 
   inputs = {
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.darwin.follows = "nix-darwin";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";

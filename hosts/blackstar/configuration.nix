@@ -1,11 +1,4 @@
-{ self, ... }:
-let
-  keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGqjgwVNyOXW0dl9GNgu5/y9KuDF+NCKnmcSUYQPFbO luna@crona"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM4Dhobhj1+/qQAHUsnVsVemPWUyKdvs2lgX3/zy+fG+ root@crona"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxCvGO9OqARsPJl/bKRumMHC/zFgRyFLEVQrru/z7qr luna@excalibur"
-  ];
-in
+{ config, self, keys, ... }:
 {
   time.timeZone = "Europe/Brussels";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -19,6 +12,8 @@ in
   services.openssh.enable = true;
 
   security.sudo.extraConfig = "Defaults env_reset,pwfeedback";
+
+  users.mutableUsers = false;
 
   environment.defaultPackages = [ ];
   fonts.enableDefaultPackages = false;
@@ -73,14 +68,26 @@ in
     options = "caps:escape";
   };
 
+  age.secrets = {
+    password.file = "${self}/secrets/blackstar/password.age";
+  };
+
   users.users.luna = {
     isNormalUser = true;
     description = "Luna Heyman";
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys = { inherit keys; };
+    hashedPasswordFile = config.age.secrets.password.path;
+
+    openssh.authorizedKeys.keys = [
+      keys.crona.luna
+      keys.excalibur.luna
+    ];
   };
 
   users.users.root = {
-    openssh.authorizedKeys = { inherit keys; };
+    openssh.authorizedKeys.keys = [
+      keys.crona.luna
+      keys.excalibur.luna
+    ];
   };
 }

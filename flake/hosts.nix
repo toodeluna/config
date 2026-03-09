@@ -6,6 +6,7 @@
 }:
 let
   modules.darwin = [
+    inputs.agenix.darwinModules.default
     inputs.home-manager.darwinModules.default
     inputs.lix-module.darwinModules.default
     inputs.nix-homebrew.darwinModules.default
@@ -13,6 +14,7 @@ let
   ];
 
   modules.nixos = [
+    inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.default
     inputs.home-manager.nixosModules.default
     inputs.lix-module.nixosModules.default
@@ -40,8 +42,9 @@ in
       path = "${self}/hosts/excalibur";
     };
 
-    shared = {
-      specialArgs = { inherit self inputs; };
+    shared.specialArgs = {
+      inherit self inputs;
+      keys = import "${self}/secrets/keys.nix";
     };
 
     perClass = class: {
