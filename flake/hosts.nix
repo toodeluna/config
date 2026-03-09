@@ -42,13 +42,23 @@ in
       path = "${self}/hosts/excalibur";
     };
 
+    hosts.soul = {
+      class = "iso";
+      arch = "x86_64";
+      path = "${self}/hosts/soul";
+    };
+
     shared.specialArgs = {
       inherit self inputs;
       keys = import "${self}/secrets/keys.nix";
     };
 
     perClass = class: {
-      modules = lib.getAttr class modules;
+      modules = modules.${class} or [ ];
     };
+  };
+
+  flake.packages.x86_64-linux = {
+    iso = self.nixosConfigurations.soul.config.system.build.isoImage;
   };
 }
