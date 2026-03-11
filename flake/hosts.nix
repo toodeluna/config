@@ -52,6 +52,12 @@ in
       path = "${self}/hosts/soul";
     };
 
+    hosts.tsubaki = {
+      class = "nixos";
+      arch = "x86_64";
+      path = "${self}/hosts/tsubaki";
+    };
+
     shared.specialArgs = {
       inherit self inputs;
       keys = import "${self}/secrets/keys.nix";

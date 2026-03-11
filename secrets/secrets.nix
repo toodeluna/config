@@ -19,4 +19,9 @@ with import ./keys.nix;
     blackstar.root
     blackstar.luna
   ];
+
+  "tsubaki/password.age".publicKeys = [
+    tsubaki.root
+    tsubaki.luna
+  ];
 }

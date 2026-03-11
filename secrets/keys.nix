@@ -12,4 +12,9 @@
   excalibur = {
     luna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxCvGO9OqARsPJl/bKRumMHC/zFgRyFLEVQrru/z7qr luna@excalibur";
   };
+
+  tsubaki = {
+    root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINsUNMh6INuVnZe06ALsX2F6jmt0by/KkFPRjkYPumKL root@tsubaki";
+    luna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3D8r9pdPr6OScMptesEudEH6y4Dx0Bu72IyHE+lcdZ luna@tsubaki";
+  };
 }
