@@ -3,6 +3,7 @@
   keys,
   lib,
   self,
+  pkgs,
   ...
 }:
 {
@@ -74,6 +75,44 @@
     443
   ];
 
+  systemd.services.podman-yamtrack-network = {
+    description = "Create yamtrack podman network";
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+
+    script = ''
+      ${lib.getExe pkgs.podman} network exists yamtrack || ${lib.getExe pkgs.podman} network create yamtrack
+    '';
+  };
+
+  virtualisation.oci-containers.containers.redis = {
+    image = "docker.io/library/redis:8-alpine";
+    volumes = [ "/var/lib/yamtrack-redis:/data" ];
+    ports = [ "127.0.0.1:6379:6379" ];
+    networks = [ "yamtrack" ];
+  };
+
+  virtualisation.oci-containers.containers.yamtrack = {
+    image = "ghcr.io/fuzzygrim/yamtrack:latest";
+    dependsOn = [ "redis" ];
+    volumes = [ "/var/lib/yamtrack/db:/yamtrack/db" ];
+    ports = [ "127.0.0.1:4242:8000" ];
+    networks = [ "yamtrack" ];
+    environmentFiles = [ config.age.secrets.yamtrack-secret.path ];
+
+    environment = {
+      TZ = config.time.timeZone;
+      REDIS_URL = "redis://redis:6379";
+      URLS = "https://yamtrack.toodeluna.net";
+      REGISTRATION = "False";
+      ADMIN_ENABLED = "True";
+    };
+  };
+
   services.xserver.xkb = {
     layout = "us";
     options = "caps:escape";
@@ -101,6 +140,16 @@
         proxyWebsockets = true;
       };
     };
+
+    virtualHosts."yamtrack.toodeluna.net" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:4242";
+        proxyWebsockets = true;
+      };
+    };
   };
 
   security.acme = {
@@ -111,6 +160,7 @@
   age.secrets = {
     password.file = "${self}/secrets/blackstar/password.age";
     anki-password-luna.file = "${self}/secrets/blackstar/anki/luna.age";
+    yamtrack-secret.file = "${self}/secrets/blackstar/yamtrack/secret.age";
   };
 
   users.users.luna = {

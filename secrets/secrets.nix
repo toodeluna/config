@@ -14,4 +14,9 @@ with import ./keys.nix;
     blackstar.root
     blackstar.luna
   ];
+
+  "blackstar/yamtrack/secret.age".publicKeys = [
+    blackstar.root
+    blackstar.luna
+  ];
 }
