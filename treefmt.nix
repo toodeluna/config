@@ -1,11 +1,15 @@
 {
   treefmt,
+  just,
   kdePackages,
   nixfmt,
   prettier,
+  bash,
 }:
 treefmt.withConfig {
   runtimeInputs = [
+    bash
+    just
     kdePackages.qtdeclarative
     nixfmt
     prettier
@@ -13,6 +17,17 @@ treefmt.withConfig {
 
   settings = {
     tree-root-file = "flake.nix";
+
+    formatter.just = {
+      command = "bash";
+      includes = [ "justfile" ];
+
+      options = [
+        "-euc"
+        ''for file in "$@"; do just --fmt --unstable --justfile "$file"; done''
+        "--"
+      ];
+    };
 
     formatter.nixfmt = {
       command = "nixfmt";

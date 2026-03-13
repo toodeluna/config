@@ -2,6 +2,7 @@
   mkShell,
   agenix,
   caligula,
+  just,
   lix,
   mkpasswd,
 }:
@@ -12,6 +13,7 @@ mkShell {
   packages = [
     agenixWithLix
     caligula
+    just
     lix
     mkpasswd
   ];
