@@ -20,7 +20,6 @@ in
   programs.niri.enable = true;
   programs.fish.enable = true;
   programs.git.enable = true;
-  programs.bash.interactiveShellInit = ''exec "${lib.getExe pkgs.nushell}"'';
 
   services.resolved.enable = true;
 
@@ -179,10 +178,6 @@ in
   environment.variables = {
     NIXOS_OZONE_WL = "1";
   };
-
-  environment.shells = [
-    pkgs.nushell
-  ];
 
   environment.systemPackages = [
     pkgs.crosspatch

@@ -45,20 +45,10 @@
     users.luna = ./home.nix;
   };
 
-  programs.bash.interactiveShellInit = ''
-    if [[ $- == *i* ]]; then
-      exec "${lib.getExe pkgs.nushell}"
-    fi
-  '';
-
   environment.systemPackages = [
     pkgs.discord
     pkgs.spotify
     pkgs.vscode
-  ];
-
-  environment.shells = [
-    pkgs.nushell
   ];
 
   fonts.packages = [
