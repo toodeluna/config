@@ -1,0 +1,26 @@
+name: update
+run-name: Updating inputs
+
+on:
+  schedule:
+    - cron: "0 17 * * 5"
+
+jobs:
+  update:
+    name: Update inputs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install Lix
+        uses: samueldr/lix-gha-installer-action@v2026-02-22
+      - name: Update inputs
+        run: nix flake update
+      - name: Push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add flake.lock
+          git diff --cached --quiet || git commit -m "chore: update flake inputs"
+          git push

@@ -1,5 +1,5 @@
 name: check
-run-name: Check outputs
+run-name: Checking outputs
 on: push
 
 jobs:
