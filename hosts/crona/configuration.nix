@@ -10,7 +10,6 @@ let
   inherit (config.services.displayManager.sessionData) desktops;
 in
 {
-  time.timeZone = "Europe/Brussels";
   i18n.defaultLocale = "en_US.UTF-8";
 
   console.useXkbConfig = true;
@@ -23,45 +22,14 @@ in
   programs.git.enable = true;
   programs.bash.interactiveShellInit = ''exec "${lib.getExe pkgs.nushell}"'';
 
-  services.openssh.enable = true;
   services.resolved.enable = true;
 
-  security.sudo.extraConfig = "Defaults env_reset,pwfeedback";
   security.rtkit.enable = true;
 
   users.mutableUsers = false;
 
   environment.defaultPackages = [ ];
   fonts.enableDefaultPackages = false;
-
-  system = {
-    stateVersion = "26.06";
-    configurationRevision = self.rev or self.dirtRev or null;
-  };
-
-  nix = {
-    channel.enable = false;
-    optimise.automatic = true;
-
-    settings = {
-      keep-going = true;
-      keep-outputs = true;
-      keep-derivations = true;
-
-      warn-dirty = false;
-      use-xdg-base-directories = true;
-
-      allowed-users = [ "@wheel" ];
-      trusted-users = [ "@wheel" ];
-
-      experimental-features = [
-        "flakes"
-        "lix-custom-sub-commands"
-        "nix-command"
-        "pipe-operator"
-      ];
-    };
-  };
 
   home-manager = {
     useGlobalPkgs = true;
@@ -70,11 +38,6 @@ in
     sharedModules = [ inputs.zen-browser.homeModules.default ];
     extraSpecialArgs = { inherit self inputs; };
     users.luna = ./home.nix;
-  };
-
-  nixpkgs.config = {
-    allowAliases = false;
-    allowUnfree = true;
   };
 
   nixpkgs.overlays = [
@@ -229,7 +192,6 @@ in
     pkgs.crosspatch
     pkgs.discord
     pkgs.gimp
-    pkgs.lix-diff
     pkgs.pcsx2
     pkgs.qbittorrent
     pkgs.signal-desktop

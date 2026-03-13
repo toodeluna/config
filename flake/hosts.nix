@@ -6,6 +6,8 @@
 }:
 let
   modules.darwin = [
+    "${self}/modules/common"
+    "${self}/modules/darwin"
     inputs.agenix.darwinModules.default
     inputs.home-manager.darwinModules.default
     inputs.lix-module.darwinModules.default
@@ -14,6 +16,8 @@ let
   ];
 
   modules.nixos = [
+    "${self}/modules/common"
+    "${self}/modules/nixos"
     inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.default
     inputs.home-manager.nixosModules.default
@@ -21,6 +25,8 @@ let
   ];
 
   modules.iso = [
+    "${self}/modules/common"
+    "${self}/modules/nixos"
     inputs.lix-module.nixosModules.default
   ];
 in
