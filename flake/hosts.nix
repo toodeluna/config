@@ -5,6 +5,12 @@
   ...
 }:
 let
+  classes = {
+    darwin = "darwin";
+    iso = "nixos";
+    nixos = "nixos";
+  };
+
   modules.darwin = [
     "${self}/modules/common"
     "${self}/modules/darwin"
@@ -21,12 +27,6 @@ let
     inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.default
     inputs.home-manager.nixosModules.default
-    inputs.lix-module.nixosModules.default
-  ];
-
-  modules.iso = [
-    "${self}/modules/common"
-    "${self}/modules/nixos"
     inputs.lix-module.nixosModules.default
   ];
 in
@@ -70,7 +70,7 @@ in
     };
 
     perClass = class: {
-      modules = lib.getAttr class modules;
+      modules = lib.getAttr (lib.getAttr class classes) modules;
     };
   };
 
