@@ -21,7 +21,10 @@ treefmt.withConfig {
 
     formatter.prettier = {
       command = "prettier";
-      includes = [ "*.md" "*.yml" ];
+      includes = [
+        "*.md"
+        "*.yml"
+      ];
     };
 
     formatter.qmlformat = {
