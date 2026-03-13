@@ -25,10 +25,6 @@
     TrackpadRightClick = true;
   };
 
-  nixpkgs.overlays = [
-    inputs.firefox-addons.overlays.default
-  ];
-
   users = {
     knownUsers = [ "luna" ];
 
