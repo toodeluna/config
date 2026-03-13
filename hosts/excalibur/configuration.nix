@@ -38,10 +38,6 @@
   };
 
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "home-manager-backup";
-    sharedModules = [ inputs.zen-browser.homeModules.default ];
     users.luna = ./home.nix;
   };
 

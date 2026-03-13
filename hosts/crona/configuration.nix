@@ -31,11 +31,6 @@ in
   fonts.enableDefaultPackages = false;
 
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "home-manager-backup";
-    sharedModules = [ inputs.zen-browser.homeModules.default ];
-    extraSpecialArgs = { inherit self inputs; };
     users.luna = ./home.nix;
   };
 

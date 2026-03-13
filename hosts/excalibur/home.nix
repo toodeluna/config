@@ -6,12 +6,10 @@
 }:
 {
   programs.carapace.enable = true;
-  programs.home-manager.enable = true;
   programs.nix-your-shell.enable = true;
   programs.nushell.enable = true;
 
   home = {
-    stateVersion = "25.11";
     preferXdgDirectories = true;
   };
 

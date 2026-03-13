@@ -7,11 +7,9 @@
   ...
 }:
 {
-  home.stateVersion = "25.05";
   home.preferXdgDirectories = true;
 
   programs.carapace.enable = true;
-  programs.home-manager.enable = true;
   programs.nix-your-shell.enable = true;
   programs.nushell.enable = true;
   programs.rofi.enable = true;
