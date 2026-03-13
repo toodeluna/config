@@ -19,6 +19,7 @@ let
     inputs.lix-module.darwinModules.default
     inputs.nix-homebrew.darwinModules.default
     inputs.oomf-time.darwinModules.default
+    inputs.tgirlpkgs.darwinModules.default
   ];
 
   modules.nixos = [
@@ -28,6 +29,7 @@ let
     inputs.disko.nixosModules.default
     inputs.home-manager.nixosModules.default
     inputs.lix-module.nixosModules.default
+    inputs.tgirlpkgs.nixosModules.default
   ];
 in
 {
