@@ -4,6 +4,6 @@
     ./security
     ./settings
 
-    ./tools.nix
+    ./cleanup.nix
   ];
 }

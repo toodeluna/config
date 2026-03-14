@@ -1,5 +1,7 @@
 {
   imports = [
     ./settings
+
+    ./cleanup.nix
   ];
 }

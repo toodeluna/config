@@ -73,6 +73,7 @@ in
 
     perClass = class: {
       modules = lib.getAttr (lib.getAttr class classes) modules;
+      specialArgs = { inherit class; };
     };
   };
 

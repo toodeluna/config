@@ -6,9 +6,6 @@
   programs.git.enable = true;
   programs.neovim.enable = true;
 
-  environment.defaultPackages = [ ];
-  fonts.enableDefaultPackages = false;
-
   image = {
     baseName = lib.mkImageMediaOverride "soul";
     extension = "iso";
