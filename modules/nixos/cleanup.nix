@@ -1,5 +1,5 @@
 { class, ... }:
 {
   fonts.enableDefaultPackages = false;
-  system.disableInstallerTools = class != "iso";
+  system.disableInstallerTools = config.soul.system.type != "iso";
 }

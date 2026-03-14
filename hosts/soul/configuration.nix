@@ -1,5 +1,9 @@
 { self, lib, ... }:
 {
+  soul.system = {
+    type = "iso";
+  };
+
   console.useXkbConfig = true;
   networking.useNetworkd = true;
 

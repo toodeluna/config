@@ -10,6 +10,10 @@ let
   inherit (config.services.displayManager.sessionData) desktops;
 in
 {
+  soul.system = {
+    type = "desktop";
+  };
+
   console.useXkbConfig = true;
   networking.useNetworkd = true;
 

@@ -11,6 +11,10 @@
     primaryUser = "luna";
   };
 
+  soul.system = {
+    type = "laptop";
+  };
+
   system.keyboard = {
     enableKeyMapping = true;
     remapCapsLockToEscape = true;

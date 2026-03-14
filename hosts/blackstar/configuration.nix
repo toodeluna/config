@@ -7,6 +7,10 @@
   ...
 }:
 {
+  soul.system = {
+    type = "server";
+  };
+
   console.useXkbConfig = true;
   networking.useNetworkd = true;
 
