@@ -10,8 +10,6 @@ let
   inherit (config.services.displayManager.sessionData) desktops;
 in
 {
-  i18n.defaultLocale = "en_US.UTF-8";
-
   console.useXkbConfig = true;
   networking.useNetworkd = true;
 

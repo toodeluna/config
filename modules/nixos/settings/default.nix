@@ -1,5 +1,5 @@
 {
   imports = [
-    ./settings
+    ./language.nix
   ];
 }
