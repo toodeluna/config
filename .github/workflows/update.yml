@@ -17,6 +17,8 @@ jobs:
         uses: samueldr/lix-gha-installer-action@v2026-02-22
       - name: Update inputs
         run: nix flake update
+      - name: Check outputs
+        run: nix flake check
       - name: Push changes
         run: |
           git config user.name "github-actions[bot]"
