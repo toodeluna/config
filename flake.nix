@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tgirlpkgs = {
+      url = "github:tgirlcloud/pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

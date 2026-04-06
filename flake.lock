@@ -119,6 +119,7 @@
         "lix-module": "lix-module",
         "nixpkgs": "nixpkgs",
         "systems": "systems",
+        "tgirlpkgs": "tgirlpkgs",
         "treefmt": "treefmt"
       }
     },
@@ -134,6 +135,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tgirlpkgs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775467435,
+        "narHash": "sha256-rR8xvm83pelKEt4SyOxSxZsC9ZX9Gw0VrW/jWjRqFBU=",
+        "owner": "tgirlcloud",
+        "repo": "pkgs",
+        "rev": "fbb07200c9856446834b740fe4cb7a18e8a4c790",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tgirlcloud",
+        "repo": "pkgs",
         "type": "github"
       }
     },
