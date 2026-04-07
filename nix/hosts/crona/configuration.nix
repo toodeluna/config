@@ -1,6 +1,7 @@
 {
   inputs',
   inputs,
+  lib,
   pkgs,
   self,
   ...
@@ -83,6 +84,10 @@
     ];
   };
 
+  home-manager.users = {
+    luna = ./home.nix;
+  };
+
   programs.mango = {
     enable = true;
     package = inputs'.mangowm.packages.mango.override { enableXWayland = false; };
@@ -102,9 +107,46 @@
     jack.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+
+    extraConfig.pipewire."10-quantum" = {
+      "context.properties"."default.clock.min-quantum" = 1024;
+    };
+
+    extraConfig.pipewire."99-rnnoise"."context.modules" = lib.singleton {
+      name = "libpipewire-module-filter-chain";
+
+      args = {
+        "node.description" = "Noise cancelling source";
+        "media.name" = "Noise cancelling source";
+
+        "filter.graph".nodes = lib.singleton {
+          type = "ladspa";
+          name = "rnnoise";
+          label = "noise_suppressor_mono";
+          plugin = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+
+          control = {
+            "VAD Threshold (%)" = 95;
+            "VAD Grace Period (ms)" = 200;
+            "Retroactive VAD Grace (ms)" = 0;
+          };
+        };
+
+        "capture.props" = {
+          "node.name" = "capture.rnnoise_source";
+          "audio.rate" = 48000;
+        };
+
+        "playback.props" = {
+          "node.name" = "rnnoise_source";
+          "media.class" = "Audio/Source";
+          "audio.rate" = 48000;
+        };
+      };
+    };
   };
 
-  home-manager.users = {
-    luna = ./home.nix;
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
   };
 }

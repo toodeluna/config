@@ -30,6 +30,10 @@ in
     preferXdgDirectories = true;
   };
 
+  home.packages = [
+    pkgs.discord
+  ];
+
   catppuccin = {
     inherit (osConfig.catppuccin) enable flavor accent;
     sources.palette = osConfig.catppuccin.sources.palette;
