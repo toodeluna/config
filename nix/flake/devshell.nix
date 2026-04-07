@@ -9,6 +9,7 @@
         packages = [
           pkgs.git
           pkgs.lix
+          pkgs.nh
         ];
       };
     };
