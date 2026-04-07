@@ -40,6 +40,7 @@ in
 
   home.packages = [
     pkgs.discord
+    pkgs.spotify
   ];
 
   catppuccin = {
