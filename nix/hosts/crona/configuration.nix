@@ -9,6 +9,9 @@
 {
   programs.gamemode.enable = true;
 
+  fonts.enableDefaultPackages = false;
+  environment.defaultPackages = [ ];
+
   system = {
     stateVersion = "26.05";
     configurationRevision = self.rev or self.dirtRev or null;
@@ -164,5 +167,33 @@
 
   environment.variables = {
     NIXOS_OZONE_WL = "1";
+  };
+
+  fonts.packages = [
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.noto-fonts
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-cjk-serif
+    pkgs.noto-fonts-color-emoji
+    pkgs.work-sans
+  ];
+
+  fonts.fontconfig = {
+    enable = true;
+
+    defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font" ];
+      emoji = [ "Noto Color Emoji" ];
+
+      serif = [
+        "Noto Serif"
+        "Noto Cjk Serif"
+      ];
+
+      sansSerif = [
+        "Work Sans"
+        "Noto Cjk Sans"
+      ];
+    };
   };
 }
