@@ -42,6 +42,7 @@
 
     sharedModules = [
       inputs.catppuccin.homeModules.default
+      inputs.nixvim.homeModules.default
       inputs.tgirlpkgs.homeModules.default
     ];
   };

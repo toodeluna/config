@@ -7,10 +7,14 @@
 }:
 let
   inherit (config.home) homeDirectory;
+
+  nixvimArgs = {
+    inherit osConfig;
+    homeConfig = config;
+  };
 in
 {
   programs.home-manager.enable = true;
-  programs.neovim.enable = true;
 
   home = {
     stateVersion = "26.05";
@@ -47,5 +51,19 @@ in
         ui = "!${lib.getExe pkgs.lazygit}";
       };
     };
+  };
+
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    viAlias = true;
+    useGlobalPkgs = true;
+
+    imports = [
+      ./neovim.nix
+      { _module.args = nixvimArgs; }
+    ];
   };
 }

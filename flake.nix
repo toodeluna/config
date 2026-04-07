@@ -44,6 +44,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
+
     tgirlpkgs = {
       url = "github:tgirlcloud/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
