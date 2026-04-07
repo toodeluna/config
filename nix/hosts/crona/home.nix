@@ -31,6 +31,12 @@ in
     preferXdgDirectories = true;
   };
 
+  home.pointerCursor = {
+    size = 24;
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+  };
+
   home.packages = [
     pkgs.discord
   ];
@@ -174,6 +180,9 @@ in
 
       bordercolor = "0x${builtins.substring 1 (-1) colors.overlay0.hex}ff";
       focuscolor = "0x${builtins.substring 1 (-1) colors.blue.hex}ff";
+
+      cursor_size = config.home.pointerCursor.size;
+      cursor_theme = config.home.pointerCursor.name;
     };
 
     settings.env = [
