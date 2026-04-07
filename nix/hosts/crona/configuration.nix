@@ -1,11 +1,12 @@
 {
+  inputs',
   inputs,
   pkgs,
   self,
   ...
 }:
 {
-  programs.mango.enable = true;
+  programs.gamemode.enable = true;
 
   system = {
     stateVersion = "26.05";
@@ -73,7 +74,34 @@
   users.users.luna = {
     isNormalUser = true;
     description = "Luna Heyman";
-    extraGroups = [ "wheel" ];
+
+    extraGroups = [
+      "wheel"
+      "video"
+      "audio"
+      "gamemode"
+    ];
+  };
+
+  programs.mango = {
+    enable = true;
+    package = inputs'.mangowm.packages.mango.override { enableXWayland = false; };
+  };
+
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
 
   home-manager.users = {

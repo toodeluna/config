@@ -22,6 +22,8 @@ in
   _module.args = { inherit (palette) colors; };
 
   programs.home-manager.enable = true;
+  programs.bash.enable = true;
+  programs.lutris.enable = true;
 
   home = {
     stateVersion = "26.05";
@@ -95,6 +97,11 @@ in
 
   wayland.windowManager.mango = {
     enable = true;
+    package = osConfig.programs.mango.package;
+
+    autostart_sh = ''
+      ${lib.getExe pkgs.xwayland-satellite} :2
+    '';
 
     settings = {
       borderpx = 2;
@@ -103,6 +110,10 @@ in
       bordercolor = "0x${builtins.substring 1 (-1) colors.overlay0.hex}ff";
       focuscolor = "0x${builtins.substring 1 (-1) colors.blue.hex}ff";
     };
+
+    settings.env = [
+      "DISPLAY,:2"
+    ];
 
     settings.monitorrule = [
       "name:DP-1,scale:1.75,width:2840,height:2160"
