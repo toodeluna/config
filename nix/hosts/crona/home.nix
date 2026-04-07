@@ -25,6 +25,7 @@ in
   programs.kitty.enable = true;
   programs.lutris.enable = true;
   programs.nix-your-shell.enable = true;
+  programs.opencode.enable = true;
 
   home = {
     stateVersion = "26.05";

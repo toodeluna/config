@@ -5,8 +5,20 @@
   ...
 }:
 {
+  globals.mapleader = " ";
+
   plugins.lualine.enable = true;
   plugins.noice.enable = true;
+
+  plugins.mini = {
+    enable = true;
+    mockDevIcons = true;
+
+    modules = {
+      icons.style = "glyph";
+      files = { };
+    };
+  };
 
   opts = {
     signcolumn = "yes";
@@ -113,4 +125,13 @@
     softtabstop = 2;
     expandtab = true;
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>fe";
+      action = lib.nixvim.mkRaw "MiniFiles.open";
+      options.desc = "Toggle file explorer";
+    }
+  ];
 }
