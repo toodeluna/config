@@ -21,8 +21,9 @@ in
 {
   _module.args = { inherit (palette) colors; };
 
-  programs.home-manager.enable = true;
   programs.bash.enable = true;
+  programs.home-manager.enable = true;
+  programs.kitty.enable = true;
   programs.lutris.enable = true;
 
   home = {
