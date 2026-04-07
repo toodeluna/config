@@ -8,12 +8,14 @@ let
   modules = {
     nixos = [
       inputs.disko.nixosModules.default
+      inputs.home-manager.nixosModules.default
       inputs.lix-module.nixosModules.default
       inputs.tgirlpkgs.nixosModules.default
     ];
 
     darwin = [
       inputs.lix-module.darwinModules.default
+      inputs.home-manager.darwinModules.default
       inputs.tgirlpkgs.darwinModules.default
     ];
   };

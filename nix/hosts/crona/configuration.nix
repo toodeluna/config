@@ -1,4 +1,9 @@
-{ pkgs, self, ... }:
+{
+  inputs,
+  pkgs,
+  self,
+  ...
+}:
 {
   system = {
     stateVersion = "26.05";
@@ -26,6 +31,20 @@
     };
   };
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "home-manager-backup";
+
+    extraSpecialArgs = {
+      inherit self inputs;
+    };
+
+    sharedModules = [
+      inputs.tgirlpkgs.homeModules.default
+    ];
+  };
+
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -40,5 +59,9 @@
     isNormalUser = true;
     description = "Luna Heyman";
     extraGroups = [ "wheel" ];
+  };
+
+  home-manager.users = {
+    luna = ./home.nix;
   };
 }
