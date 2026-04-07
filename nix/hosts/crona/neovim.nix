@@ -1,6 +1,15 @@
-{ homeConfig, ... }:
 {
+  homeConfig,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  plugins.lualine.enable = true;
+  plugins.noice.enable = true;
+
   opts = {
+    signcolumn = "yes";
     termguicolors = true;
     wrap = false;
     scrolloff = 10;
@@ -26,6 +35,76 @@
       flavour = homeConfig.catppuccin.flavor;
       transparent_background = true;
     };
+  };
+
+  plugins.lsp = {
+    enable = true;
+
+    servers = {
+      nixd.enable = true;
+    };
+  };
+
+  plugins.blink-cmp = {
+    enable = true;
+
+    settings.keymap = {
+      preset = "enter";
+      "<Tab>" = [ "select_next" ];
+      "<S-Tab>" = [ "select_prev" ];
+    };
+  };
+
+  plugins.conform-nvim = {
+    enable = true;
+
+    settings.format_on_save = {
+      timeout_ms = 500;
+      lsp_format = "fallback";
+    };
+
+    settings.formatters_by_ft = {
+      bash = [ "shfmt" ];
+      just = [ "just" ];
+      nix = [ "nixfmt" ];
+      sh = [ "shfmt" ];
+    };
+
+    settings.formatters_by_ft._ = [
+      "squeeze_blanks"
+      "trim_whitepace"
+      "trim_newlines"
+    ];
+
+    settings.formatters = {
+      just.command = lib.getExe pkgs.just;
+      nixfmt.command = lib.getExe pkgs.nixfmt;
+    };
+
+    settings.formatters.shfmt = {
+      command = lib.getExe pkgs.shfmt;
+
+      args = [
+        "-s"
+        "-i"
+        "2"
+      ];
+    };
+  };
+
+  plugins.treesitter = {
+    enable = true;
+    highlight.enable = true;
+    indent.enable = true;
+
+    grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+      bash
+      gitattributes
+      gitignore
+      just
+      markdown
+      nix
+    ];
   };
 
   files."ftplugin/nix.lua".localOpts = {
