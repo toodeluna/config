@@ -7,6 +7,7 @@
 let
   modules = {
     nixos = [
+      inputs.catppuccin.nixosModules.default
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.default
       inputs.lix-module.nixosModules.default

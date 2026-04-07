@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  osConfig,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (config.home) homeDirectory;
 in
@@ -9,6 +15,11 @@ in
   home = {
     stateVersion = "26.05";
     preferXdgDirectories = true;
+  };
+
+  catppuccin = {
+    inherit (osConfig.catppuccin) enable flavor accent;
+    sources.palette = osConfig.catppuccin.sources.palette;
   };
 
   programs.git = {
@@ -27,13 +38,13 @@ in
 
       user = {
         name = "Luna Heyman";
-	email = "luna@toodeluna.net";
+        email = "luna@toodeluna.net";
       };
 
       alias = {
         lga = "log --decorate --oneline --graph";
-	put = "push --set-upstream";
-	ui = "!${lib.getExe pkgs.lazygit}";
+        put = "push --set-upstream";
+        ui = "!${lib.getExe pkgs.lazygit}";
       };
     };
   };

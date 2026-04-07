@@ -41,8 +41,19 @@
     };
 
     sharedModules = [
+      inputs.catppuccin.homeModules.default
       inputs.tgirlpkgs.homeModules.default
     ];
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "blue";
+  };
+
+  catppuccin.sources = {
+    palette = inputs.catppuccin-palette;
   };
 
   boot.loader = {
