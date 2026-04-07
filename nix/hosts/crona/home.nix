@@ -21,10 +21,10 @@ in
 {
   _module.args = { inherit (palette) colors; };
 
-  programs.bash.enable = true;
   programs.home-manager.enable = true;
   programs.kitty.enable = true;
   programs.lutris.enable = true;
+  programs.nix-your-shell.enable = true;
 
   home = {
     stateVersion = "26.05";
@@ -63,6 +63,21 @@ in
       CODE_DIR = "${homeDirectory}/code";
       GAMES_DIR = "${homeDirectory}/media/games";
     };
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.bash = {
+    enable = true;
+    initExtra = lib.mkOrder 2000 "exec ${lib.getExe pkgs.nushell}";
+  };
+
+  programs.nushell = {
+    enable = true;
+    settings.show_banner = false;
   };
 
   programs.git = {
