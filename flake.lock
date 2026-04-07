@@ -187,6 +187,30 @@
         "url": "https://git.lix.systems/lix-project/nixos-module"
       }
     },
+    "mangowm": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "scenefx": "scenefx"
+      },
+      "locked": {
+        "lastModified": 1775461179,
+        "narHash": "sha256-4vvuk6tl8M2wuW3VJU9Uwc3HCrL95cSJImEODNNQEy8=",
+        "owner": "mangowm",
+        "repo": "mango",
+        "rev": "e83a9dff820ce2215ecbbbea7d617d24d0825174",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mangowm",
+        "repo": "mango",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1775036866,
@@ -239,11 +263,33 @@
         "home-manager": "home-manager",
         "lix": "lix",
         "lix-module": "lix-module",
+        "mangowm": "mangowm",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "systems": "systems",
         "tgirlpkgs": "tgirlpkgs",
         "treefmt": "treefmt"
+      }
+    },
+    "scenefx": {
+      "inputs": {
+        "nixpkgs": [
+          "mangowm",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1750785057,
+        "narHash": "sha256-tGX6j4W91rcb+glXJo43sjPI9zQvPotonknG1BdihR4=",
+        "owner": "wlrfx",
+        "repo": "scenefx",
+        "rev": "3a6cfb12e4ba97b43326357d14f7b3e40897adfc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wlrfx",
+        "repo": "scenefx",
+        "type": "github"
       }
     },
     "systems": {

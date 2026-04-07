@@ -11,6 +11,7 @@ let
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.default
       inputs.lix-module.nixosModules.default
+      inputs.mangowm.nixosModules.mango
       inputs.tgirlpkgs.nixosModules.default
     ];
 

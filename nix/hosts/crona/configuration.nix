@@ -5,6 +5,8 @@
   ...
 }:
 {
+  programs.mango.enable = true;
+
   system = {
     stateVersion = "26.05";
     configurationRevision = self.rev or self.dirtRev or null;
@@ -42,6 +44,7 @@
 
     sharedModules = [
       inputs.catppuccin.homeModules.default
+      inputs.mangowm.hmModules.mango
       inputs.nixvim.homeModules.default
       inputs.tgirlpkgs.homeModules.default
     ];
