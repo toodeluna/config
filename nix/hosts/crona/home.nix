@@ -203,6 +203,26 @@ in
       "SUPER+SHIFT_L, J, exchange_client, down"
       "SUPER+SHIFT_L, K, exchange_client, up"
       "SUPER+SHIFT_L, L, exchange_client, right"
+
+      "SUPER, 1, view, 1, 0"
+      "SUPER, 2, view, 2, 0"
+      "SUPER, 3, view, 3, 0"
+      "SUPER, 4, view, 4, 0"
+      "SUPER, 5, view, 5, 0"
+      "SUPER, 6, view, 6, 0"
+      "SUPER, 7, view, 7, 0"
+      "SUPER, 8, view, 8, 0"
+      "SUPER, 9, view, 9, 0"
+
+      "SUPER+SHIFT, 1, tag, 1, 0"
+      "SUPER+SHIFT, 2, tag, 2, 0"
+      "SUPER+SHIFT, 3, tag, 3, 0"
+      "SUPER+SHIFT, 4, tag, 4, 0"
+      "SUPER+SHIFT, 5, tag, 5, 0"
+      "SUPER+SHIFT, 6, tag, 6, 0"
+      "SUPER+SHIFT, 7, tag, 7, 0"
+      "SUPER+SHIFT, 8, tag, 8, 0"
+      "SUPER+SHIFT, 9, tag, 9, 0"
     ];
   };
 }
