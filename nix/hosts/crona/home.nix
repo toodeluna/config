@@ -100,6 +100,66 @@ in
     ];
   };
 
+  programs.zen-browser = {
+    enable = true;
+
+    profiles.default = {
+      name = "Default";
+      isDefault = true;
+      containersForce = true;
+      spacesForce = true;
+      pinsForce = true;
+
+      settings = {
+        "extensions.autoDisableScopes" = false;
+        "general.autoScroll" = true;
+        "middlemouse.paste" = false;
+        "zen.urlbar.replace-newtab" = true;
+        "zen.view.use-single-toolbar" = false;
+        "zen.welcome-screen.seen" = true;
+      };
+
+      search = {
+        force = true;
+        default = "ddg";
+      };
+
+      extensions = {
+        force = true;
+
+        packages = [
+          pkgs.firefox-addons.catppuccin-web-file-icons
+          pkgs.firefox-addons.proton-pass
+          pkgs.firefox-addons.return-youtube-dislikes
+          pkgs.firefox-addons.shinigami-eyes
+          pkgs.firefox-addons.sponsorblock
+          pkgs.firefox-addons.stylus
+          pkgs.firefox-addons.ublock-origin
+          pkgs.firefox-addons.yomitan
+          pkgs.firefox-addons.youtube-shorts-block
+        ];
+      };
+
+      containers.default = {
+        color = "purple";
+        icon = "fingerprint";
+        id = 1;
+      };
+
+      spaces.default = {
+        id = "97657b3e-278e-488b-af22-e68f8c495f04";
+        position = 1000;
+        container = config.programs.zen-browser.profiles.default.containers.default.id;
+
+        theme.colors = lib.singleton {
+          red = colors.base.rgb.r;
+          green = colors.base.rgb.g;
+          blue = colors.base.rgb.b;
+        };
+      };
+    };
+  };
+
   wayland.windowManager.mango = {
     enable = true;
     package = osConfig.programs.mango.package;
@@ -132,6 +192,7 @@ in
 
       "SUPER, RETURN, spawn, ${lib.getExe pkgs.kitty}"
       "SUPER, SPACE, spawn, ${lib.getExe pkgs.rofi} -show drun"
+      "SUPER, B, spawn, ${lib.getExe config.programs.zen-browser.package}"
 
       "SUPER, H, focusdir, left"
       "SUPER, J, focusdir, down"

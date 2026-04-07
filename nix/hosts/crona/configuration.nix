@@ -32,6 +32,10 @@
         "nix-command"
         "pipe-operator"
       ];
+
+      deprecated-features = [
+        "broken-string-indentation"
+      ];
     };
   };
 
@@ -49,6 +53,7 @@
       inputs.mangowm.hmModules.mango
       inputs.nixvim.homeModules.default
       inputs.tgirlpkgs.homeModules.default
+      inputs.zen-browser.homeModules.default
     ];
   };
 
@@ -71,6 +76,10 @@
     allowAliases = false;
     allowUnfree = true;
   };
+
+  nixpkgs.overlays = [
+    inputs.firefox-addons.overlays.default
+  ];
 
   users.users.luna = {
     isNormalUser = true;
