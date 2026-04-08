@@ -27,6 +27,11 @@ in
   programs.nix-your-shell.enable = true;
   programs.opencode.enable = true;
 
+  gtk = {
+    enable = true;
+    colorScheme = "dark";
+  };
+
   home = {
     stateVersion = "26.05";
     preferXdgDirectories = true;
