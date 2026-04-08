@@ -40,12 +40,14 @@ in
 
   home.packages = [
     pkgs.discord
+    pkgs.qbittorrent
     pkgs.spotify
   ];
 
   catppuccin = {
     inherit (osConfig.catppuccin) enable flavor accent;
     sources.palette = osConfig.catppuccin.sources.palette;
+    mpv.enable = false;
   };
 
   xdg.userDirs = {
@@ -121,6 +123,25 @@ in
       ./neovim.nix
       { _module.args = nixvimArgs; }
     ];
+  };
+
+  programs.mpv = {
+    enable = true;
+
+    scripts = [
+      pkgs.mpvScripts.modernz
+      pkgs.mpvScripts.thumbfast
+    ];
+
+    config = {
+      ao = "pulse";
+      osc = "no";
+      target-colorspace-hint = "no";
+    };
+
+    scriptOpts.modernz = {
+      icon_theme = "material";
+    };
   };
 
   programs.zen-browser = {
