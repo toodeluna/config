@@ -213,6 +213,10 @@ in
     settings.bind = [
       "SUPER, R, reload_config"
 
+      "SUPER, O, toggleoverview"
+      "SUPER, F, togglefloating"
+      "SUPER+SHIFT_L, F, togglefullscreen"
+
       "SUPER, Q, killclient"
       "SUPER+SHIFT_L, Q, quit"
 
@@ -249,6 +253,11 @@ in
       "SUPER+SHIFT, 7, tag, 7, 0"
       "SUPER+SHIFT, 8, tag, 8, 0"
       "SUPER+SHIFT, 9, tag, 9, 0"
+    ];
+
+    settings.mousebind = [
+      "SUPER, BTN_LEFT, moveresize, curmove"
+      "SUPER, BTN_RIGHT, moveresize, curresize"
     ];
   };
 }
