@@ -221,8 +221,8 @@ in
     package = osConfig.programs.mango.package;
 
     autostart_sh = ''
-      ${lib.getExe pkgs.quickshell}
-      ${lib.getExe pkgs.xwayland-satellite} :2
+      ${lib.getExe pkgs.xwayland-satellite} :2 &
+      ${lib.getExe pkgs.quickshell} &
     '';
 
     settings = {
