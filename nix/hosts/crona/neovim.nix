@@ -63,8 +63,16 @@
 
     settings.keymap = {
       preset = "enter";
-      "<Tab>" = [ "select_next" ];
-      "<S-Tab>" = [ "select_prev" ];
+
+      "<Tab>" = [
+        "select_next"
+        "fallback"
+      ];
+
+      "<S-Tab>" = [
+        "select_prev"
+        "fallback"
+      ];
     };
   };
 
@@ -80,18 +88,20 @@
       bash = [ "shfmt" ];
       just = [ "just" ];
       nix = [ "nixfmt" ];
+      qml = [ "qmlformat" ];
       sh = [ "shfmt" ];
     };
 
     settings.formatters_by_ft._ = [
       "squeeze_blanks"
-      "trim_whitepace"
+      "trim_whitespace"
       "trim_newlines"
     ];
 
     settings.formatters = {
       just.command = lib.getExe pkgs.just;
       nixfmt.command = lib.getExe pkgs.nixfmt;
+      qmlformat.command = lib.getExe' pkgs.kdePackages.qtdeclarative "qmlformat";
     };
 
     settings.formatters.shfmt = {
@@ -117,6 +127,7 @@
       just
       markdown
       nix
+      qmljs
     ];
   };
 

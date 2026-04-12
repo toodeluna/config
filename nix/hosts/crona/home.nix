@@ -4,6 +4,7 @@
   lib,
   osConfig,
   pkgs,
+  self,
   ...
 }:
 let
@@ -87,6 +88,12 @@ in
   programs.nushell = {
     enable = true;
     settings.show_banner = false;
+  };
+
+  programs.quickshell = {
+    enable = true;
+    activeConfig = "default";
+    configs.default = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/code/github.com/toodeluna/config/cfg/quickshell";
   };
 
   programs.git = {
@@ -214,6 +221,7 @@ in
     package = osConfig.programs.mango.package;
 
     autostart_sh = ''
+      ${lib.getExe pkgs.quickshell}
       ${lib.getExe pkgs.xwayland-satellite} :2
     '';
 
@@ -285,5 +293,9 @@ in
       "SUPER, BTN_LEFT, moveresize, curmove"
       "SUPER, BTN_RIGHT, moveresize, curresize"
     ];
+  };
+
+  xdg.configFile."quickshell.json".text = builtins.toJSON {
+    wallpaper = "${self}/assets/wallpapers/yamada-ryo.png";
   };
 }
