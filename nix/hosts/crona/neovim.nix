@@ -8,7 +8,9 @@
   globals.mapleader = " ";
 
   plugins.lualine.enable = true;
+  plugins.neo-tree.enable = true;
   plugins.noice.enable = true;
+  plugins.oil.enable = true;
   plugins.telescope.enable = true;
 
   plugins.mini = {
@@ -17,7 +19,6 @@
 
     modules = {
       icons.style = "glyph";
-      files = { };
     };
   };
 
@@ -138,12 +139,22 @@
     expandtab = true;
   };
 
+  files."ftplugin/qml.lua".localOpts = {
+    expandtab = true;
+  };
+
   keymaps = [
     {
       mode = "n";
-      key = "<leader>fe";
-      action = lib.nixvim.mkRaw "MiniFiles.open";
-      options.desc = "Toggle file explorer";
+      key = "<leader>ft";
+      action = ":Neotree toggle<CR>";
+      options.desc = "Toggle file tree";
+    }
+    {
+      mode = "n";
+      key = "-";
+      action = ":Oil<CR>";
+      options.desc = "Open file explorer";
     }
     {
       mode = "n";
