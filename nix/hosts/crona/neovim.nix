@@ -9,6 +9,7 @@
 
   plugins.lualine.enable = true;
   plugins.noice.enable = true;
+  plugins.telescope.enable = true;
 
   plugins.mini = {
     enable = true;
@@ -132,6 +133,12 @@
       key = "<leader>fe";
       action = lib.nixvim.mkRaw "MiniFiles.open";
       options.desc = "Toggle file explorer";
+    }
+    {
+      mode = "n";
+      key = "<leader>fp";
+      action = lib.nixvim.mkRaw ''require("telescope.builtin").find_files'';
+      options.desc = "Find files";
     }
   ];
 }
