@@ -4,16 +4,16 @@ export NH_DARWIN_FLAKE := justfile_directory()
 
 [linux]
 build hostname=`hostname`:
-    nh os build -H {{ hostname }} -o ./result
+    nh os build -H {{ hostname }} -o ./result -d always
 
 [macos]
 build hostname=`hostname`:
-    nh darwin build -H {{ hostname }} -o ./result
+    nh darwin build -H {{ hostname }} -o ./result -d always
 
 [linux]
 switch hostname=`hostname`:
-    nh os switch -H {{ hostname }}
+    nh os switch -H {{ hostname }} -d always
 
 [macos]
 switch hostname=`hostname`:
-    nh darwin switch -H {{ hostname }}
+    nh darwin switch -H {{ hostname }} -d always
