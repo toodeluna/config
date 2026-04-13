@@ -23,7 +23,6 @@ in
   _module.args = { inherit (palette) colors; };
 
   programs.home-manager.enable = true;
-  programs.kitty.enable = true;
   programs.lutris.enable = true;
   programs.nix-your-shell.enable = true;
   programs.opencode.enable = true;
@@ -72,6 +71,18 @@ in
     extraConfig = {
       CODE_DIR = "${homeDirectory}/code";
       GAMES_DIR = "${homeDirectory}/media/games";
+    };
+  };
+
+  programs.kitty = {
+    enable = true;
+
+    settings = {
+      background_opacity = 0.95;
+      confirm_os_window_close = 0;
+
+      tab_bar_style = "powerline";
+      tab_powerline_style = "angled";
     };
   };
 
@@ -227,10 +238,13 @@ in
 
     settings = {
       borderpx = 2;
-      border_radius = 6;
+
+      blur = 1;
+      blur_params_radius = 4;
+      blur_params_num_passes = 2;
 
       bordercolor = "0x${builtins.substring 1 (-1) colors.overlay0.hex}ff";
-      focuscolor = "0x${builtins.substring 1 (-1) colors.blue.hex}ff";
+      focuscolor = "0x${builtins.substring 1 (-1) colors.mauve.hex}ff";
 
       cursor_size = config.home.pointerCursor.size;
       cursor_theme = config.home.pointerCursor.name;
