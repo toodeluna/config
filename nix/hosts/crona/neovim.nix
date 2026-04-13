@@ -146,15 +146,17 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>ft";
+      key = "<leader>fe";
       action = ":Neotree toggle<CR>";
       options.desc = "Toggle file tree";
+      options.silent = true;
     }
     {
       mode = "n";
       key = "-";
       action = ":Oil<CR>";
       options.desc = "Open file explorer";
+      options.silent = true;
     }
     {
       mode = "n";
