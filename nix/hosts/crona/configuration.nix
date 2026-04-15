@@ -16,6 +16,8 @@
   fonts.enableDefaultPackages = false;
   environment.defaultPackages = [ ];
 
+  services.blueman.enable = true;
+
   system = {
     stateVersion = "26.05";
     configurationRevision = self.rev or self.dirtRev or null;

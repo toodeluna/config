@@ -11,6 +11,20 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+
+    settings.General = {
+      Experimental = true;
+      FastConnectable = true;
+    };
+
+    settings.Policy = {
+      AutoEnable = true;
+    };
+  };
+
   boot.initrd.availableKernelModules = [
     "ahci"
     "nvme"
