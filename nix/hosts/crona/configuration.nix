@@ -70,15 +70,34 @@
     enable = true;
     flavor = "mocha";
     accent = "blue";
+    plymouth.enable = false;
   };
 
   catppuccin.sources = {
     palette = inputs.catppuccin-palette;
   };
 
+  boot = {
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "systemd.show_status=auto"
+    ];
+  };
+
   boot.loader = {
+    timeout = 0;
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
+  };
+
+  boot.plymouth = {
+    enable = true;
+    theme = "plymouth-gif-theme";
+    themePackages = [ pkgs.custom.plymouth-gif-theme ];
   };
 
   nixpkgs.config = {
@@ -88,6 +107,7 @@
 
   nixpkgs.overlays = [
     inputs.firefox-addons.overlays.default
+    self.overlays.default
   ];
 
   users.users.luna = {
