@@ -123,6 +123,7 @@
 
     grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
       bash
+      devicetree
       gitattributes
       gitignore
       just
