@@ -1,0 +1,38 @@
+name: format
+run-name: Checking formatting
+on: push
+
+jobs:
+  format:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    if: github.ref_name != 'style/fix-formatting'
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install Lix
+        uses: samueldr/lix-gha-installer-action@v2026-02-22
+      - name: Check formatting
+        id: format
+        run: |
+          if nix fmt -- --ci; then
+            echo "fixed=false" >> $GITHUB_OUTPUT
+          else
+            nix fmt
+            echo "fixed=true" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+      - name: Create pull request
+        if: failure() && steps.format.outputs.fixed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          body: "This PR fixes formatting issues automatically detected by CI."
+          branch: "style/fix-formatting"
+          commit-message: "style: fix formatting"
+          delete-branch: true
+          title: "style: fix formatting"
