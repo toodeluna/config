@@ -6,6 +6,7 @@ let
   };
 
   overlays = [
+    inputs.agenix.overlays.default
     inputs.lix-module.overlays.default
     inputs.tgirlpkgs.overlays.default
   ];

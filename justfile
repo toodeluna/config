@@ -17,3 +17,7 @@ switch hostname=`hostname`:
 [macos]
 switch hostname=`hostname`:
     nh darwin switch -H {{ hostname }} -d always
+
+[working-directory("./nix/secrets")]
+edit-secret name:
+    agenix -e {{ name }}

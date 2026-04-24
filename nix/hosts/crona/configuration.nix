@@ -1,4 +1,5 @@
 {
+  config,
   inputs',
   inputs,
   lib,
@@ -18,6 +19,7 @@
 
   services.blueman.enable = true;
   services.udisks2.enable = true;
+  services.openssh.enable = true;
 
   system = {
     stateVersion = "26.05";
@@ -101,6 +103,10 @@
     themePackages = [ pkgs.custom.plymouth-gif-theme ];
   };
 
+  age.secrets = {
+    password.file = "${self}/nix/secrets/crona/password.age";
+  };
+
   nixpkgs.config = {
     allowAliases = false;
     allowUnfree = true;
@@ -114,6 +120,7 @@
   users.users.luna = {
     isNormalUser = true;
     description = "Luna Heyman";
+    hashedPasswordFile = config.age.secrets.password.path;
 
     extraGroups = [
       "wheel"

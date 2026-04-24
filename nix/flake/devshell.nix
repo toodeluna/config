@@ -7,6 +7,7 @@
         meta.description = "The development environment for this configuration";
 
         packages = [
+          pkgs.agenix
           pkgs.git
           pkgs.just
           pkgs.lix
