@@ -6,6 +6,10 @@
 }:
 let
   modules = {
+    shared = [
+      "${self}/nix/modules"
+    ];
+
     nixos = [
       inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.default
@@ -34,8 +38,9 @@ in
       arch = "x86_64";
     };
 
-    shared.specialArgs = {
-      inherit self inputs;
+    shared = {
+      specialArgs = { inherit self inputs; };
+      modules = modules.shared;
     };
 
     perClass = class: {

@@ -43,12 +43,6 @@ in
     package = pkgs.bibata-cursors;
   };
 
-  home.packages = [
-    pkgs.discord
-    pkgs.qbittorrent
-    pkgs.spotify
-  ];
-
   catppuccin = {
     inherit (osConfig.catppuccin) enable flavor accent;
     sources.palette = osConfig.catppuccin.sources.palette;

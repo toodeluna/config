@@ -8,6 +8,10 @@
   ...
 }:
 {
+  soul.system.packages = {
+    inherit (pkgs) discord spotify qbittorrent;
+  };
+
   time.timeZone = "Europe/Brussels";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -15,41 +19,9 @@
   programs.gamemode.enable = true;
 
   fonts.enableDefaultPackages = false;
-  environment.defaultPackages = [ ];
 
   services.blueman.enable = true;
   services.udisks2.enable = true;
-  services.openssh.enable = true;
-
-  system = {
-    stateVersion = "26.05";
-    configurationRevision = self.rev or self.dirtRev or null;
-  };
-
-  nix = {
-    channel.enable = false;
-    optimise.automatic = true;
-
-    settings = {
-      keep-going = true;
-      keep-outputs = true;
-      keep-derivations = true;
-
-      allowed-users = [ "@wheel" ];
-      trusted-users = [ "@wheel" ];
-
-      experimental-features = [
-        "flakes"
-        "lix-custom-sub-commands"
-        "nix-command"
-        "pipe-operator"
-      ];
-
-      deprecated-features = [
-        "broken-string-indentation"
-      ];
-    };
-  };
 
   home-manager = {
     useGlobalPkgs = true;
@@ -106,16 +78,6 @@
   age.secrets = {
     password.file = "${self}/nix/secrets/crona/password.age";
   };
-
-  nixpkgs.config = {
-    allowAliases = false;
-    allowUnfree = true;
-  };
-
-  nixpkgs.overlays = [
-    inputs.firefox-addons.overlays.default
-    self.overlays.default
-  ];
 
   users.users.luna = {
     isNormalUser = true;
