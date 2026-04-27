@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ inputs, ... }:
 {
   nixpkgs.config = {
     allowAliases = false;
@@ -6,7 +6,7 @@
   };
 
   nixpkgs.overlays = [
-    self.overlays.default
+    inputs.self.overlays.default
     inputs.firefox-addons.overlays.default
   ];
 }
