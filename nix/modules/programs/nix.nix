@@ -17,6 +17,9 @@ in
     gc.automatic = pkgs.stdenv.hostPlatform.isDarwin;
 
     settings = {
+      warn-dirty = false;
+      use-xdg-base-directories = true;
+
       keep-going = true;
       keep-outputs = true;
       keep-derivations = true;
