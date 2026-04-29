@@ -25,7 +25,7 @@ in
   programs.lutris.enable = true;
   programs.nix-your-shell.enable = true;
   programs.opencode.enable = true;
-  programs.discord.enable = true;
+  programs.vesktop.enable = true;
 
   gtk = {
     enable = true;
