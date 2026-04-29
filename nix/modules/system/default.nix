@@ -1,5 +1,7 @@
 {
   imports = [
+    ./directories.nix
+    ./home.nix
     ./locale.nix
     ./nixpkgs.nix
     ./packages.nix

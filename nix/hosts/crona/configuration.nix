@@ -22,23 +22,6 @@
 
   fonts.enableDefaultPackages = false;
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "home-manager-backup";
-
-    extraSpecialArgs = {
-      inherit self inputs;
-    };
-
-    sharedModules = [
-      inputs.catppuccin.homeModules.default
-      inputs.nixvim.homeModules.default
-      inputs.tgirlpkgs.homeModules.default
-      inputs.zen-browser.homeModules.default
-    ];
-  };
-
   catppuccin = {
     enable = true;
     flavor = "mocha";

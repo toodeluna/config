@@ -22,7 +22,6 @@ in
 {
   _module.args = { inherit (palette) colors; };
 
-  programs.home-manager.enable = true;
   programs.lutris.enable = true;
   programs.nix-your-shell.enable = true;
   programs.opencode.enable = true;
@@ -30,11 +29,6 @@ in
   gtk = {
     enable = true;
     colorScheme = "dark";
-  };
-
-  home = {
-    stateVersion = "26.05";
-    preferXdgDirectories = true;
   };
 
   home.pointerCursor = {
@@ -47,25 +41,6 @@ in
     inherit (osConfig.catppuccin) enable flavor accent;
     sources.palette = osConfig.catppuccin.sources.palette;
     mpv.enable = false;
-  };
-
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-
-    desktop = "${homeDirectory}/desktop";
-    documents = "${homeDirectory}/documents";
-    download = "${homeDirectory}/downloads";
-    music = "${homeDirectory}/media/music";
-    pictures = "${homeDirectory}/media/photos";
-    publicShare = "${homeDirectory}/share";
-    templates = "${homeDirectory}/templates";
-    videos = "${homeDirectory}/media/videos";
-
-    extraConfig = {
-      CODE_DIR = "${homeDirectory}/code";
-      GAMES_DIR = "${homeDirectory}/media/games";
-    };
   };
 
   programs.kitty = {
