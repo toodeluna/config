@@ -26,6 +26,24 @@ let
       inputs.tgirlpkgs.darwinModules.default
     ];
   };
+
+  mkHelpers = class: rec {
+    mkNixosModule = module: mkModule { nixos = module; };
+    mkDarwinModule = module: mkModule { darwin = module; };
+
+    mkModule =
+      {
+        shared ? { },
+        nixos ? { },
+        darwin ? { },
+      }:
+      {
+        imports =
+          (lib.singleton shared)
+          ++ (lib.optional (class == "nixos") nixos)
+          ++ (lib.optional (class == "darwin") darwin);
+      };
+  };
 in
 {
   imports = [ inputs.easy-hosts.flakeModule ];
@@ -43,8 +61,12 @@ in
     };
 
     perClass = class: {
-      specialArgs = { inherit class; };
       modules = lib.getAttr class modules;
+
+      specialArgs = {
+        inherit class;
+        inherit (mkHelpers class) mkModule mkNixosModule mkDarwinModule;
+      };
     };
   };
 }
