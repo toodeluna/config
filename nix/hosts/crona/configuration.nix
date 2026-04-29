@@ -22,8 +22,6 @@
 
   fonts.enableDefaultPackages = false;
 
-  services.udisks2.enable = true;
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
