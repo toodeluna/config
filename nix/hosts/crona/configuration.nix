@@ -1,6 +1,5 @@
 {
   config,
-  inputs',
   inputs,
   lib,
   pkgs,
@@ -34,7 +33,6 @@
 
     sharedModules = [
       inputs.catppuccin.homeModules.default
-      inputs.mangowm.hmModules.mango
       inputs.nixvim.homeModules.default
       inputs.tgirlpkgs.homeModules.default
       inputs.zen-browser.homeModules.default
@@ -103,9 +101,9 @@
     };
   };
 
-  programs.mango = {
+  programs.hyprland = {
     enable = true;
-    package = inputs'.mangowm.packages.mango.override { enableXWayland = false; };
+    xwayland.enable = false;
   };
 
   programs.steam = {

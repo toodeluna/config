@@ -221,86 +221,166 @@ in
     };
   };
 
-  wayland.windowManager.mango = {
+  wayland.windowManager.hyprland = {
     enable = true;
-    package = osConfig.programs.mango.package;
-
-    autostart_sh = ''
-      ${lib.getExe pkgs.xwayland-satellite} :2 &
-      ${lib.getExe pkgs.quickshell} &
-    '';
 
     settings = {
-      borderpx = 2;
+      general = {
+        layout = "master";
 
-      blur = 1;
-      blur_params_radius = 4;
-      blur_params_num_passes = 2;
+        gaps_in = 5;
+        gaps_out = 10;
 
-      bordercolor = "0x${builtins.substring 1 (-1) colors.overlay0.hex}ff";
-      focuscolor = "0x${builtins.substring 1 (-1) colors.mauve.hex}ff";
+        border_size = 2;
+        resize_on_border = true;
 
-      cursor_size = config.home.pointerCursor.size;
-      cursor_theme = config.home.pointerCursor.name;
+        "col.active_border" = "$mauve";
+        "col.inactive_border" = "$overlay0";
+      };
+
+      decoration = {
+        rounding = 6;
+        rounding_power = 3;
+
+        blur = {
+          enabled = true;
+          passes = 2;
+          size = 5;
+          vibrancy = 0.15;
+        };
+
+        shadow = {
+          color = "rgba($crustAlphaaa)";
+          enabled = true;
+          range = 6;
+          render_power = 3;
+        };
+      };
+
+      input = {
+        kb_layout = osConfig.services.xserver.xkb.layout;
+        kb_options = osConfig.services.xserver.xkb.options;
+
+        sensitivity = 0;
+        follow_mouse = true;
+        touchpad.natural_scroll = true;
+      };
+
+      misc = {
+        disable_hyprland_logo = true;
+        force_default_wallpaper = false;
+      };
+
+      animations = {
+        enabled = true;
+
+        bezier = [
+          "linear, 0, 0, 1, 1"
+          "easeOut, 0.23, 1, 0.32, 1"
+          "easeInOut, 0.28, 0.09, 0.59, 1"
+        ];
+
+        animation = [
+          "global, true, 5, default"
+          "border, true, 4, easeOut"
+          "fade, true, 4, easeOut"
+          "windows, true, 4, easeOut"
+          "windowsIn, true, 4, easeOut, slide bottom"
+          "windowsOut, true, 4, easeOut, gnomed"
+          "workspaces, true, 1.9, easeInOut"
+          "workspacesIn, true, 1.9, easeInOut, slide"
+          "workspacesOut, true, 1.9, easeInOut, slide"
+        ];
+      };
+
+      xwayland = {
+        enabled = false;
+      };
+
+      env = [
+        "DISPLAY,:2"
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+      ];
+
+      exec-once = [
+        "${lib.getExe pkgs.xwayland-satellite} :2"
+        "${lib.getExe pkgs.quickshell}"
+      ];
+
+      bind = [
+        "super, return, exec, ${lib.getExe pkgs.kitty}"
+        "super, space, exec, ${lib.getExe pkgs.rofi} -show drun"
+        "super, b, exec, ${lib.getExe config.programs.zen-browser.package}"
+        "super, s, exec, ${lib.getExe pkgs.hyprshot} --mode region --clipboard-only"
+        "super, c, exec, ${lib.getExe pkgs.hyprpicker} | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
+
+        "super, q, killactive"
+        "super shift, q, exit"
+
+        "super, f, togglefloating"
+        "super shift, f, fullscreen"
+
+        "super, h, movefocus, l"
+        "super, j, movefocus, d"
+        "super, k, movefocus, u"
+        "super, l, movefocus, r"
+
+        "super shift, h, movewindow, l"
+        "super shift, j, movewindow, d"
+        "super shift, k, movewindow, u"
+        "super shift, l, movewindow, r"
+
+        "super, 1, workspace, 1"
+        "super, 2, workspace, 2"
+        "super, 3, workspace, 3"
+        "super, 4, workspace, 4"
+        "super, 5, workspace, 5"
+        "super, 6, workspace, 6"
+        "super, 7, workspace, 7"
+        "super, 8, workspace, 8"
+        "super, 9, workspace, 9"
+        "super, 0, workspace, 10"
+
+        "super shift, 1, movetoworkspace, 1"
+        "super shift, 2, movetoworkspace, 2"
+        "super shift, 3, movetoworkspace, 3"
+        "super shift, 4, movetoworkspace, 4"
+        "super shift, 5, movetoworkspace, 5"
+        "super shift, 6, movetoworkspace, 6"
+        "super shift, 7, movetoworkspace, 7"
+        "super shift, 8, movetoworkspace, 8"
+        "super shift, 9, movetoworkspace, 9"
+        "super shift, 0, movetoworkspace, 10"
+
+        "alt, tab, workspace, previous"
+      ];
+
+      bindm = [
+        "super, mouse:272, movewindow"
+        "super, mouse:273, resizewindow"
+      ];
+
+      windowrule = [
+        {
+          name = "fix-xwayland-drags";
+          no_focus = true;
+
+          "match:class" = "^$";
+          "match:float" = true;
+          "match:fullscreen" = false;
+          "match:pin" = false;
+          "match:title" = "^$";
+          "match:xwayland" = true;
+        }
+        {
+          name = "suppress-maximize-events";
+          suppress_event = "maximize";
+
+          "match:class" = ".*";
+        }
+      ];
     };
-
-    settings.env = [
-      "DISPLAY,:2"
-    ];
-
-    settings.monitorrule = [
-      "name:DP-1,scale:1.75,width:2840,height:2160"
-    ];
-
-    settings.bind = [
-      "SUPER, R, reload_config"
-
-      "SUPER, O, toggleoverview"
-      "SUPER, F, togglefloating"
-      "SUPER+SHIFT_L, F, togglefullscreen"
-
-      "SUPER, Q, killclient"
-      "SUPER+SHIFT_L, Q, quit"
-
-      "SUPER, RETURN, spawn, ${lib.getExe pkgs.kitty}"
-      "SUPER, SPACE, spawn, ${lib.getExe pkgs.rofi} -show drun"
-      "SUPER, B, spawn, ${lib.getExe config.programs.zen-browser.package}"
-
-      "SUPER, H, focusdir, left"
-      "SUPER, J, focusdir, down"
-      "SUPER, K, focusdir, up"
-      "SUPER, L, focusdir, right"
-
-      "SUPER+SHIFT_L, H, exchange_client, left"
-      "SUPER+SHIFT_L, J, exchange_client, down"
-      "SUPER+SHIFT_L, K, exchange_client, up"
-      "SUPER+SHIFT_L, L, exchange_client, right"
-
-      "SUPER, 1, view, 1, 0"
-      "SUPER, 2, view, 2, 0"
-      "SUPER, 3, view, 3, 0"
-      "SUPER, 4, view, 4, 0"
-      "SUPER, 5, view, 5, 0"
-      "SUPER, 6, view, 6, 0"
-      "SUPER, 7, view, 7, 0"
-      "SUPER, 8, view, 8, 0"
-      "SUPER, 9, view, 9, 0"
-
-      "SUPER+SHIFT, 1, tag, 1, 0"
-      "SUPER+SHIFT, 2, tag, 2, 0"
-      "SUPER+SHIFT, 3, tag, 3, 0"
-      "SUPER+SHIFT, 4, tag, 4, 0"
-      "SUPER+SHIFT, 5, tag, 5, 0"
-      "SUPER+SHIFT, 6, tag, 6, 0"
-      "SUPER+SHIFT, 7, tag, 7, 0"
-      "SUPER+SHIFT, 8, tag, 8, 0"
-      "SUPER+SHIFT, 9, tag, 9, 0"
-    ];
-
-    settings.mousebind = [
-      "SUPER, BTN_LEFT, moveresize, curmove"
-      "SUPER, BTN_RIGHT, moveresize, curresize"
-    ];
   };
 
   xdg.configFile."quickshell.json".text = builtins.toJSON {
