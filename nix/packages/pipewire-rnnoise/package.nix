@@ -14,34 +14,36 @@ let
   package = writeTextDir path (builtins.toJSON config);
 
   config = {
-    name = "libpipewire-module-filter-chain";
+    "context.modules" = lib.singleton {
+      name = "libpipewire-module-filter-chain";
 
-    args = {
-      "node.description" = "Noise cancelling source";
-      "media.name" = "Noise cancelling source";
+      args = {
+        "node.description" = "Noise cancelling source";
+        "media.name" = "Noise cancelling source";
 
-      "filter.graph".nodes = lib.singleton {
-        type = "ladspa";
-        name = "rnnoise";
-        label = "noise_suppressor_mono";
-        plugin = "${rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+        "filter.graph".nodes = lib.singleton {
+          type = "ladspa";
+          name = "rnnoise";
+          label = "noise_suppressor_mono";
+          plugin = "${rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
 
-        control = {
-          "VAD Threshold (%)" = vadThreshold;
-          "VAD Grace Period (ms)" = vadGracePeriod;
-          "Retroactive VAD Grace (ms)" = vadGracePeriodRetroactive;
+          control = {
+            "VAD Threshold (%)" = vadThreshold;
+            "VAD Grace Period (ms)" = vadGracePeriod;
+            "Retroactive VAD Grace (ms)" = vadGracePeriodRetroactive;
+          };
         };
-      };
 
-      "capture.props" = {
-        "node.name" = "capture.rnnoise_source";
-        "audio.rate" = 48000;
-      };
+        "capture.props" = {
+          "node.name" = "capture.rnnoise_source";
+          "audio.rate" = 48000;
+        };
 
-      "playback.props" = {
-        "node.name" = "rnnoise_source";
-        "media.class" = "Audio/Source";
-        "audio.rate" = 48000;
+        "playback.props" = {
+          "node.name" = "rnnoise_source";
+          "media.class" = "Audio/Source";
+          "audio.rate" = 48000;
+        };
       };
     };
   };
