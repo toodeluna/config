@@ -362,5 +362,6 @@ in
 
   xdg.configFile."quickshell.json".text = builtins.toJSON {
     wallpaper = "${self}/assets/wallpapers/yamada-ryo.png";
+    theme = lib.mapAttrs (name: color: color.hex) colors;
   };
 }
