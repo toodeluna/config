@@ -7,6 +7,12 @@
   ...
 }:
 {
+  soul.hardware = {
+    amdgpu.enable = true;
+    bluetooth.enable = true;
+    intelcpu.enable = true;
+  };
+
   soul.system.packages = {
     inherit (pkgs) discord spotify qbittorrent;
   };
@@ -16,7 +22,6 @@
 
   fonts.enableDefaultPackages = false;
 
-  services.blueman.enable = true;
   services.udisks2.enable = true;
 
   home-manager = {
