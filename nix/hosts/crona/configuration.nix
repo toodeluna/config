@@ -14,7 +14,7 @@
   };
 
   soul.system.packages = {
-    inherit (pkgs) discord spotify qbittorrent;
+    inherit (pkgs) spotify qbittorrent;
   };
 
   programs.dconf.enable = true;
