@@ -102,6 +102,7 @@
   };
 
   fonts.packages = [
+    pkgs.maple-mono.NF
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.noto-fonts
     pkgs.noto-fonts-cjk-sans
