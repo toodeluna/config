@@ -18,6 +18,10 @@ switch hostname=`hostname`:
 switch hostname=`hostname`:
     nh darwin switch -H {{ hostname }} -d always
 
+[linux]
+boot hostname=`hostname`:
+    nh os boot -H {{ hostname }} -d always
+
 [working-directory("./nix/secrets")]
 edit-secret name:
     agenix -e {{ name }}
