@@ -22,7 +22,7 @@ in
 {
   _module.args = { inherit (palette) colors; };
 
-  programs.lutris.enable = true;
+  # programs.lutris.enable = true;
   programs.nix-your-shell.enable = true;
   programs.opencode.enable = true;
   programs.vesktop.enable = true;
@@ -119,7 +119,7 @@ in
   };
 
   programs.mpv = {
-    enable = true;
+    enable = false;
 
     scripts = [
       pkgs.mpvScripts.modernz
