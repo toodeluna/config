@@ -25,7 +25,7 @@ let
           type = "ladspa";
           name = "rnnoise";
           label = "noise_suppressor_mono";
-          plugin = "${rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+          plugin = "librnnoise_ladspa";
 
           control = {
             "VAD Threshold (%)" = vadThreshold;
@@ -53,5 +53,9 @@ let
     platforms = lib.platforms.linux;
     maintainers = [ lib.maintainers.toodeluna ];
   };
+
+  passthru = {
+    requiredLadspaPackages = [ rnnoise-plugin.ladspa ];
+  };
 in
-package // { inherit meta; }
+package // { inherit meta passthru; }
