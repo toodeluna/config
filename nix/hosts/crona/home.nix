@@ -77,6 +77,18 @@ in
     configs.default = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/code/github.com/toodeluna/config/cfg/quickshell";
   };
 
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+
+    matchBlocks = {
+      blackstar = {
+        hostname = "toodeluna.net";
+        user = "luna";
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
 

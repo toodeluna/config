@@ -49,6 +49,12 @@ in
   imports = [ inputs.easy-hosts.flakeModule ];
 
   easy-hosts = {
+    hosts.blackstar = {
+      path = "${self}/nix/hosts/blackstar";
+      class = "nixos";
+      arch = "x86_64";
+    };
+
     hosts.crona = {
       path = "${self}/nix/hosts/crona";
       class = "nixos";
@@ -66,6 +72,7 @@ in
       specialArgs = {
         inherit class;
         inherit (mkHelpers class) mkModule mkNixosModule mkDarwinModule;
+        keys = import "${self}/nix/secrets/keys.nix";
       };
     };
   };

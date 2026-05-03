@@ -22,6 +22,10 @@ switch hostname=`hostname`:
 boot hostname=`hostname`:
     nh os boot -H {{ hostname }} -d always
 
+[linux]
+deploy hostname:
+    nh os switch -H {{ hostname }} --target-host {{ hostname }}
+
 [working-directory("./nix/secrets")]
 edit-secret name:
     agenix -e {{ name }}
