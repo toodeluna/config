@@ -1,11 +1,11 @@
 import QtQuick
-import QtQuick.Effects
-import QtQuick.Layouts
 import Quickshell
-import qs.singletons.config
 
 Variants {
     model: Quickshell.screens
+
+    readonly property var margin: 10
+    readonly property var size: 44
 
     PanelWindow {
         id: root
@@ -13,8 +13,8 @@ Variants {
         required property var modelData
 
         screen: modelData
-        exclusiveZone: 44
-        implicitHeight: root.exclusiveZone + 10
+        exclusiveZone: size
+        implicitHeight: size + margin
         color: "transparent"
 
         anchors {
@@ -23,16 +23,18 @@ Variants {
             left: true
         }
 
-        RowLayout {
+        Row {
+            spacing: margin
+
             anchors {
                 fill: parent
-                leftMargin: 10
-                topMargin: 10
-                rightMargin: 10
-                bottomMargin: root.implicitHeight - root.exclusiveZone
+                margins: margin
             }
 
-            Workspaces {}
+            Workspaces {
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+            }
         }
     }
 }
