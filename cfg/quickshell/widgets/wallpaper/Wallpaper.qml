@@ -1,6 +1,5 @@
 import QtQuick
 import Quickshell
-import Quickshell.Wayland
 import qs.singletons.config
 
 Variants {
@@ -8,10 +7,10 @@ Variants {
 
     PanelWindow {
         required property var modelData
-        screen: modelData
 
-        WlrLayershell.layer: WlrLayer.Background
-        WlrLayershell.exclusionMode: ExclusionMode.Ignore
+        screen: modelData
+        aboveWindows: false
+        exclusionMode: ExclusionMode.Ignore
 
         anchors {
             top: true

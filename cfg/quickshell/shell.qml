@@ -5,6 +5,6 @@ import qs.widgets.wallpaper
 
 ShellRoot {
     Wallpaper {}
-    Bar {}
     Clock {}
+    Bar {}
 }

@@ -1,9 +1,8 @@
+import QtQml
 import QtQuick
 import QtQuick.Effects
 import Quickshell
-import Quickshell.Wayland
 import qs.singletons.config
-import qs.singletons.time
 
 Variants {
     model: Quickshell.screens
@@ -13,7 +12,7 @@ Variants {
 
         screen: modelData
         color: "transparent"
-        WlrLayershell.layer: WlrLayer.Bottom
+        aboveWindows: false
 
         anchors {
             top: true
@@ -22,10 +21,15 @@ Variants {
             left: true
         }
 
+        SystemClock {
+            id: clock
+            precision: SystemClock.Minutes
+        }
+
         Text {
             id: content
             color: Config.theme.text
-            text: Time.time
+            text: Qt.formatDateTime(clock.date, "hh:mm")
             layer.enabled: true
 
             layer.effect: MultiEffect {
