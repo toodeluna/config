@@ -14,7 +14,7 @@
   };
 
   soul.system.packages = {
-    inherit (pkgs) spotify qbittorrent;
+    inherit (pkgs) spotify qbittorrent signal-desktop;
   };
 
   programs.dconf.enable = true;
