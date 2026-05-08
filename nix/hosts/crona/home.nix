@@ -74,7 +74,7 @@ in
   programs.quickshell = {
     enable = true;
     activeConfig = "default";
-    configs.default = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/code/github.com/toodeluna/config/cfg/quickshell";
+    configs.default = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/projects/code/config/cfg/quickshell";
   };
 
   programs.ssh = {

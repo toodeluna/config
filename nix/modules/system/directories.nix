@@ -17,15 +17,15 @@ mkNixosModule {
         desktop = "${homeDirectory}/desktop";
         documents = "${homeDirectory}/documents";
         download = "${homeDirectory}/downloads";
-        music = "${homeDirectory}/media/music";
-        pictures = "${homeDirectory}/media/photos";
+        music = "${homeDirectory}/music";
+        pictures = "${homeDirectory}/pictures";
         publicShare = "${homeDirectory}/share";
         templates = "${homeDirectory}/templates";
-        videos = "${homeDirectory}/media/videos";
+        videos = "${homeDirectory}/videos";
+        projects = "${homeDirectory}/projects";
 
         extraConfig = {
-          CODE_DIR = "${homeDirectory}/code";
-          GAMES_DIR = "${homeDirectory}/media/games";
+          GAMES_DIR = "${homeDirectory}/games";
         };
       };
     };
