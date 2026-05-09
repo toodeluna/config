@@ -28,11 +28,8 @@ mkNixosModule {
         support32Bit = true;
       };
 
-      extraConfig.pipewire."10-quantum" = {
-        "context.properties"."default.clock.min-quantum" = 1024;
-      };
-
       configPackages = [
+        pkgs.custom.pipewire-quantum
         pkgs.custom.pipewire-rnnoise
       ];
     };
