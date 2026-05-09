@@ -57,6 +57,12 @@
     servers = {
       nixd.enable = true;
     };
+
+    servers.rust_analyzer = {
+      enable = true;
+      installCargo = true;
+      installRustc = true;
+    };
   };
 
   plugins.blink-cmp = {
@@ -90,6 +96,7 @@
       just = [ "just" ];
       nix = [ "nixfmt" ];
       qml = [ "qmlformat" ];
+      rust = [ "rustfmt" ];
       sh = [ "shfmt" ];
     };
 
@@ -103,6 +110,7 @@
       just.command = lib.getExe pkgs.just;
       nixfmt.command = lib.getExe pkgs.nixfmt;
       qmlformat.command = lib.getExe' pkgs.kdePackages.qtdeclarative "qmlformat";
+      rustfmt.command = lib.getExe pkgs.rustfmt;
     };
 
     settings.formatters.shfmt = {
@@ -130,6 +138,7 @@
       markdown
       nix
       qmljs
+      rust
     ];
   };
 
