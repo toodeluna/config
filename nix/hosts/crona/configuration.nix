@@ -13,6 +13,11 @@
     intelcpu.enable = true;
   };
 
+  soul.system.boot = {
+    quiet = true;
+    splash = true;
+  };
+
   soul.system.packages = {
     inherit (pkgs) spotify qbittorrent signal-desktop;
   };
@@ -31,29 +36,6 @@
 
   catppuccin.sources = {
     palette = inputs.catppuccin-palette;
-  };
-
-  boot = {
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-
-    kernelParams = [
-      "quiet"
-      "udev.log_level=3"
-      "systemd.show_status=auto"
-    ];
-  };
-
-  boot.loader = {
-    timeout = 0;
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
-  boot.plymouth = {
-    enable = true;
-    theme = "plymouth-gif-theme";
-    themePackages = [ pkgs.custom.plymouth-gif-theme ];
   };
 
   age.secrets = {

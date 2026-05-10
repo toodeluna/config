@@ -9,11 +9,8 @@
     amdcpu.enable = true;
   };
 
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    efiInstallAsRemovable = true;
-    configurationLimit = 10;
+  soul.system.boot = {
+    loader = "grub";
   };
 
   users.users.luna = {

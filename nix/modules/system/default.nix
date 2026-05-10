@@ -1,5 +1,6 @@
 {
   imports = [
+    ./boot.nix
     ./directories.nix
     ./home.nix
     ./locale.nix
