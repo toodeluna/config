@@ -7,7 +7,9 @@ let
 
   overlays = [
     inputs.agenix.overlays.default
+    inputs.firefox-addons.overlays.default
     inputs.lix-module.overlays.default
+    inputs.self.overlays.default
     inputs.tgirlpkgs.overlays.default
   ];
 in

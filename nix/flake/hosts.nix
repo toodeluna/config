@@ -15,7 +15,6 @@ let
       inputs.catppuccin.nixosModules.default
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.default
-      inputs.lix-module.nixosModules.default
       inputs.tgirlpkgs.nixosModules.default
     ];
 
@@ -23,7 +22,6 @@ let
       inputs.agenix.darwinModules.default
       inputs.home-manager.darwinModules.default
       inputs.homebrew.darwinModules.default
-      inputs.lix-module.darwinModules.default
       inputs.oomf-time.darwinModules.default
       inputs.tgirlpkgs.darwinModules.default
     ];
@@ -40,10 +38,11 @@ let
         darwin ? { },
       }:
       {
-        imports =
+        imports = lib.flatten [
           (lib.singleton shared)
-          ++ (lib.optional (class == "nixos") nixos)
-          ++ (lib.optional (class == "darwin") darwin);
+          (lib.optional (class == "nixos") nixos)
+          (lib.optional (class == "darwin") darwin)
+        ];
       };
   };
 in
@@ -51,6 +50,8 @@ in
   imports = [ inputs.easy-hosts.flakeModule ];
 
   easy-hosts = {
+    useGlobalPkgs = true;
+
     hosts.blackstar = {
       path = "${self}/nix/hosts/blackstar";
       class = "nixos";
