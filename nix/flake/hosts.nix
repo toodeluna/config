@@ -21,8 +21,10 @@ let
 
     darwin = [
       inputs.agenix.darwinModules.default
-      inputs.lix-module.darwinModules.default
       inputs.home-manager.darwinModules.default
+      inputs.homebrew.darwinModules.default
+      inputs.lix-module.darwinModules.default
+      inputs.oomf-time.darwinModules.default
       inputs.tgirlpkgs.darwinModules.default
     ];
   };
@@ -59,6 +61,12 @@ in
       path = "${self}/nix/hosts/crona";
       class = "nixos";
       arch = "x86_64";
+    };
+
+    hosts.excalibur = {
+      path = "${self}/nix/hosts/excalibur";
+      class = "darwin";
+      arch = "aarch64";
     };
 
     shared = {
