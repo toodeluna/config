@@ -423,6 +423,26 @@
         "type": "github"
       }
     },
+    "quoteit": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778942206,
+        "narHash": "sha256-m4O2x9A3zewaj2ykhHCKvzx3N8Up7b29fB2p4NlATGM=",
+        "ref": "refs/heads/main",
+        "rev": "effa50337ce46a99f696a3267c50f7e6cf33583c",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://tangled.org/isabelroses.com/quoteit"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://tangled.org/isabelroses.com/quoteit"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -443,6 +463,7 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "oomf-time": "oomf-time",
+        "quoteit": "quoteit",
         "systems": "systems",
         "tgirlpkgs": "tgirlpkgs",
         "treefmt": "treefmt",

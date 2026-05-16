@@ -89,6 +89,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quoteit = {
+      url = "git+https://tangled.org/isabelroses.com/quoteit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     tgirlpkgs = {
       url = "github:tgirlcloud/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";

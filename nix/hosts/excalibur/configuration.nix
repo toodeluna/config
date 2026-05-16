@@ -9,7 +9,12 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   soul.system.packages = {
-    inherit (pkgs) spotify signal-desktop vscode;
+    inherit (pkgs)
+      spotify
+      signal-desktop
+      vscode
+      quoteit
+      ;
   };
 
   system = {
