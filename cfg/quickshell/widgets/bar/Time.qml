@@ -13,9 +13,6 @@ BarItem {
     Text {
         text: Qt.formatDateTime(clock.date, "  dd/MM/yyyy    hh:mm")
         color: Config.theme.text
-
-        font {
-            family: "Maple Mono NF"
-        }
+        font.family: "Maple Mono NF"
     }
 }

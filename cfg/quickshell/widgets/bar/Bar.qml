@@ -43,6 +43,22 @@ Variants {
             spacing: margin
 
             anchors {
+                horizontalCenter: parent.horizontalCenter
+                top: parent.top
+                bottom: parent.bottom
+                margins: margin
+            }
+
+            Player {
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+            }
+        }
+
+        Row {
+            spacing: margin
+
+            anchors {
                 right: parent.right
                 top: parent.top
                 bottom: parent.bottom

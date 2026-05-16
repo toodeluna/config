@@ -10,7 +10,7 @@ Item {
     readonly property var spacing: 15
     readonly property var padding: spacing * 2
 
-    implicitWidth: contentItem.childrenRect.width + padding
+    implicitWidth: contentItem.implicitWidth + padding
 
     RectangularShadow {
         anchors.fill: rectangle
@@ -29,8 +29,6 @@ Item {
         Row {
             id: contentItem
             anchors.centerIn: parent
-            width: childrenRect.width
-            height: childrenRect.height
             spacing: root.spacing
         }
     }
