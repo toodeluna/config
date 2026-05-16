@@ -213,6 +213,9 @@ in
     enable = true;
     package = null;
 
+    # TODO: Remove this when Hyprland 0.55 is on nixos-unstable.
+    configType = "hyprlang";
+
     settings = {
       general = {
         layout = "master";
