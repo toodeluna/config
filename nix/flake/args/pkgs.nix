@@ -2,6 +2,7 @@
 let
   config = {
     allowAliases = false;
+    allowDeprecatedx86_64Darwin = true;
     allowUnfree = true;
   };
 

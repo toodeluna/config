@@ -62,7 +62,7 @@ let
     Window.SetBackgroundBottomColor(1, 1, 1);
   '';
 in
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "plymouth-gif-theme";
   description = "A plymouth theme that displays a custom GIF";
   version = "0.0.1";
@@ -101,8 +101,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = {
-    inherit description;
+    inherit (finalAttrs) description;
     platforms = lib.platforms.linux;
     maintainers = [ lib.maintainers.toodeluna ];
   };
-}
+})
