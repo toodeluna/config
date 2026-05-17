@@ -109,17 +109,17 @@
 
     settings.formatters_by_ft = {
       bash = [ "shfmt" ];
-      html = [ "prettier" ];
-      javascript = [ "prettier" ];
-      json = [ "prettier" ];
-      jsonc = [ "prettier" ];
+      html = [ "prettierd" ];
+      javascript = [ "prettierd" ];
+      json = [ "prettierd" ];
+      jsonc = [ "prettierd" ];
       just = [ "just" ];
       nix = [ "nixfmt" ];
       qml = [ "qmlformat" ];
       rust = [ "rustfmt" ];
       sh = [ "shfmt" ];
-      svelte = [ "prettier" ];
-      typescript = [ "prettier" ];
+      svelte = [ "prettierd" ];
+      typescript = [ "prettierd" ];
     };
 
     settings.formatters_by_ft._ = [
@@ -131,7 +131,7 @@
     settings.formatters = {
       just.command = lib.getExe pkgs.just;
       nixfmt.command = lib.getExe pkgs.nixfmt;
-      prettier.command = lib.getExe pkgs.prettierd;
+      prettierd.command = lib.getExe pkgs.prettierd;
       qmlformat.command = lib.getExe' pkgs.kdePackages.qtdeclarative "qmlformat";
       rustfmt.command = lib.getExe pkgs.rustfmt;
     };
