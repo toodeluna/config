@@ -11,7 +11,17 @@
   plugins.neo-tree.enable = true;
   plugins.noice.enable = true;
   plugins.oil.enable = true;
-  plugins.telescope.enable = true;
+
+  plugins.telescope = {
+    enable = true;
+
+    settings = {
+      defaults.file_ignore_patterns = [
+        "node_modules"
+        "target"
+      ];
+    };
+  };
 
   plugins.mini = {
     enable = true;
@@ -55,7 +65,13 @@
     enable = true;
 
     servers = {
+      cssls.enable = true;
+      eslint.enable = true;
+      html.enable = true;
       nixd.enable = true;
+      svelte.enable = true;
+      tailwindcss.enable = true;
+      ts_ls.enable = true;
     };
 
     servers.rust_analyzer = {
@@ -93,11 +109,17 @@
 
     settings.formatters_by_ft = {
       bash = [ "shfmt" ];
+      html = [ "prettier" ];
+      javascript = [ "prettier" ];
+      json = [ "prettier" ];
+      jsonc = [ "prettier" ];
       just = [ "just" ];
       nix = [ "nixfmt" ];
       qml = [ "qmlformat" ];
       rust = [ "rustfmt" ];
       sh = [ "shfmt" ];
+      svelte = [ "prettier" ];
+      typescript = [ "prettier" ];
     };
 
     settings.formatters_by_ft._ = [
@@ -109,6 +131,7 @@
     settings.formatters = {
       just.command = lib.getExe pkgs.just;
       nixfmt.command = lib.getExe pkgs.nixfmt;
+      prettier.command = lib.getExe pkgs.prettierd;
       qmlformat.command = lib.getExe' pkgs.kdePackages.qtdeclarative "qmlformat";
       rustfmt.command = lib.getExe pkgs.rustfmt;
     };
@@ -131,18 +154,59 @@
 
     grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
       bash
+      css
       devicetree
       gitattributes
       gitignore
+      html
+      javascript
+      json
       just
       markdown
       nix
       qmljs
       rust
+      svelte
+      typescript
     ];
   };
 
   files."ftplugin/nix.lua".localOpts = {
+    shiftwidth = 2;
+    tabstop = 2;
+    softtabstop = 2;
+    expandtab = true;
+  };
+
+  files."ftplugin/json.lua".localOpts = {
+    shiftwidth = 2;
+    tabstop = 2;
+    softtabstop = 2;
+    expandtab = true;
+  };
+
+  files."ftplugin/jsonc.lua".localOpts = {
+    shiftwidth = 2;
+    tabstop = 2;
+    softtabstop = 2;
+    expandtab = true;
+  };
+
+  files."ftplugin/html.lua".localOpts = {
+    shiftwidth = 2;
+    tabstop = 2;
+    softtabstop = 2;
+    expandtab = true;
+  };
+
+  files."ftplugin/svelte.lua".localOpts = {
+    shiftwidth = 2;
+    tabstop = 2;
+    softtabstop = 2;
+    expandtab = true;
+  };
+
+  files."ftplugin/css.lua".localOpts = {
     shiftwidth = 2;
     tabstop = 2;
     softtabstop = 2;
