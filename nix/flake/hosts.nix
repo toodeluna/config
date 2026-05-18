@@ -11,6 +11,7 @@ let
     ];
 
     nixos = [
+      inputs.nixpkgs.nixosModules.readOnlyPkgs
       inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.default
       inputs.disko.nixosModules.default
