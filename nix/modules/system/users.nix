@@ -78,10 +78,9 @@ let
         };
 
         password = lib.mkOption {
-          default = null;
           description = "The path to the password secret file.";
           example = ./password.age;
-          type = lib.types.nullOr lib.types.path;
+          type = lib.types.path;
         };
       };
 
@@ -116,6 +115,8 @@ mkModule {
   };
 
   nixos.config = {
+    users.mutableUsers = false;
+
     users.users = mapUsers (
       index: user: {
         isNormalUser = true;

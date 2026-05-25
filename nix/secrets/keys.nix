@@ -1,7 +1,7 @@
 {
   blackstar = {
-    root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIrV5b0plgUYjHQ24JtqvNTk0oflLR57Ysb1Nq0U6l+i root@blackstar";
-    luna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJs7Cdd0TxQwO0huQb2CnWePZ3TNCqtLld+D2i2B1DdG luna@blackstar";
+    root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUBABNxOK/OLy08u01467rj/NMdc2SnKnYkUK/EUJlN root@blackstar";
+    luna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1XlQkBcUiwKdpDqgpx8UG5qT+r7aepRfQbB/M6PYuL luna@blackstar";
   };
 
   crona = {

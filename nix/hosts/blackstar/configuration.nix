@@ -1,4 +1,4 @@
-{ self, ... }:
+{ config, self, ... }:
 {
   soul.hardware = {
     amdcpu.enable = true;
@@ -13,5 +13,9 @@
     firstName = "Luna";
     lastName = "Heyman";
     password = "${self}/nix/secrets/blackstar/password.age";
+  };
+
+  users.users.root = {
+    hashedPasswordFile = config.age.secrets."users/luna".path;
   };
 }
