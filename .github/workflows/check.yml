@@ -19,6 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install Lix
-        uses: samueldr/lix-gha-installer-action@v2026-02-22
+        uses: ./.github/actions/install-lix
       - name: Check flake
         run: nix flake check --show-trace --option allow-import-from-derivation false

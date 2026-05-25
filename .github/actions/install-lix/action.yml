@@ -1,0 +1,13 @@
+name: Install Lix
+description: Install Lix on the system
+
+runs:
+  using: composite
+
+  steps:
+    - name: Install Lix
+      uses: samueldr/lix-gha-installer-action@v2026-02-22
+      with:
+        extra_nix_config: |
+          deprecated-features = broken-string-indentation
+          experimental-features = pipe-operator flakes lix-custom-sub-commands nix-command
