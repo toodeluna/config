@@ -6,6 +6,7 @@
     ./locale.nix
     ./packages.nix
     ./time.nix
+    ./users.nix
     ./version.nix
   ];
 }

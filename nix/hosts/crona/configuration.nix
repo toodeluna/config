@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   self,
@@ -16,6 +15,17 @@
   soul.system.boot = {
     quiet = true;
     splash = true;
+  };
+
+  soul.system.users.luna = {
+    email = "luna@toodeluna.net";
+    firstName = "Luna";
+    lastName = "Heyman";
+    password = "${self}/nix/secrets/crona/password.age";
+  };
+
+  soul.system.home = {
+    imports = [ ./home.nix ];
   };
 
   soul.system.packages = {
@@ -36,27 +46,6 @@
 
   catppuccin.sources = {
     palette = inputs.catppuccin-palette;
-  };
-
-  age.secrets = {
-    password.file = "${self}/nix/secrets/crona/password.age";
-  };
-
-  users.users.luna = {
-    isNormalUser = true;
-    description = "Luna Heyman";
-    hashedPasswordFile = config.age.secrets.password.path;
-
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-      "gamemode"
-    ];
-  };
-
-  home-manager.users = {
-    luna = ./home.nix;
   };
 
   programs.ssh.knownHosts = {

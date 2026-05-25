@@ -1,9 +1,4 @@
-{
-  config,
-  keys,
-  self,
-  ...
-}:
+{ self, ... }:
 {
   soul.hardware = {
     amdcpu.enable = true;
@@ -13,16 +8,11 @@
     loader = "grub";
   };
 
-  users.users.luna = {
-    isNormalUser = true;
-    description = "Luna Heyman";
-    hashedPasswordFile = config.age.secrets.password.path;
-    extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = [ keys.crona.luna ];
-  };
-
-  age.secrets = {
-    password.file = "${self}/nix/secrets/blackstar/password.age";
+  soul.system.users.luna = {
+    email = "luna@toodeluna.net";
+    firstName = "Luna";
+    lastName = "Heyman";
+    password = "${self}/nix/secrets/blackstar/password.age";
   };
 
   services.openssh.settings = {

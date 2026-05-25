@@ -8,6 +8,16 @@
   programs.oomf-time.enable = true;
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  soul.system.users.luna = {
+    firstName = "Luna";
+    lastName = "Heyman";
+    email = "luna@toodeluna.net";
+  };
+
+  soul.system.home = {
+    imports = [ ./home.nix ];
+  };
+
   soul.system.packages = {
     inherit (pkgs)
       spotify
@@ -51,22 +61,6 @@
       "microsoft-teams"
       "sol"
     ];
-  };
-
-  users = {
-    knownUsers = [ "luna" ];
-
-    users.luna = {
-      uid = 501;
-      createHome = true;
-      shell = pkgs.bashInteractive;
-      description = "Luna Heyman";
-      home = "/Users/luna";
-    };
-  };
-
-  home-manager = {
-    users.luna = ./home.nix;
   };
 
   fonts.packages = [
