@@ -14,8 +14,4 @@
     lastName = "Heyman";
     password = "${self}/nix/secrets/blackstar/password.age";
   };
-
-  services.openssh.settings = {
-    PasswordAuthentication = false;
-  };
 }
