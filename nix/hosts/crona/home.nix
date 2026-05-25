@@ -81,10 +81,10 @@ in
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks = {
-      blackstar = {
-        hostname = "toodeluna.net";
-        user = "luna";
+    settings = {
+      "Host blackstar" = {
+        HostName = "toodeluna.net";
+        User = "luna";
       };
     };
   };
