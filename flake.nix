@@ -94,6 +94,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tangled = {
+      url = "git+https://tangled.org/tangled.org/core";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     tgirlpkgs = {
       url = "github:tgirlcloud/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";

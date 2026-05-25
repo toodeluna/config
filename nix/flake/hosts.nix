@@ -11,11 +11,12 @@ let
     ];
 
     nixos = [
-      inputs.nixpkgs.nixosModules.readOnlyPkgs
       inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.default
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.default
+      inputs.nixpkgs.nixosModules.readOnlyPkgs
+      inputs.tangled.nixosModules.knot
       inputs.tgirlpkgs.nixosModules.default
     ];
 
