@@ -180,16 +180,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1779774987,
-        "narHash": "sha256-U3/jmEzI00tQdxFWfIpnllRGUqxKQIZjW2KLSAXYWbs=",
-        "owner": "toodeluna",
-        "repo": "extersia-pkgs",
-        "rev": "9b839c976a7bf8e88571bd6798e83ad8ba2b6ba9",
+        "lastModified": 1779781180,
+        "narHash": "sha256-ZpWAyzVe6sBzWnvb62BRPH7GFMwctjSux5RP6tgSuoY=",
+        "owner": "extersia-org",
+        "repo": "pkgs",
+        "rev": "76e001b3d94ec0256a2d32d9b1cdf5e3233f590b",
         "type": "github"
       },
       "original": {
-        "owner": "toodeluna",
-        "repo": "extersia-pkgs",
+        "owner": "extersia-org",
+        "repo": "pkgs",
         "type": "github"
       }
     },

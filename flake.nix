@@ -36,8 +36,7 @@
     };
 
     extersia-pkgs = {
-      # url = "github:extersia-org/pkgs";
-      url = "github:toodeluna/extersia-pkgs";
+      url = "github:extersia-org/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
