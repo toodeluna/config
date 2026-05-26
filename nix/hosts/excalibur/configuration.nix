@@ -9,6 +9,7 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   soul.system.users.luna = {
+    primary = true;
     firstName = "Luna";
     lastName = "Heyman";
     email = "luna@toodeluna.net";
@@ -25,10 +26,6 @@
       vscode
       quoteit
       ;
-  };
-
-  system = {
-    primaryUser = "luna";
   };
 
   nix-homebrew = {

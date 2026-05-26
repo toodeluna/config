@@ -9,6 +9,7 @@
 let
   cfg = config.soul.system.users;
   usernames = lib.mapAttrsToList (name: value: value.name) cfg;
+  primaryUser = cfg |> builtins.attrValues |> lib.findSingle (user: user.primary) null null;
 
   existingGroups = lib.mapAttrsToList (name: value: value.name) config.users.groups;
   doesGroupExist = name: builtins.elem name existingGroups;
@@ -131,7 +132,7 @@ mkModule {
   };
 
   darwin.config = {
-    system.primaryUser = cfg |> builtins.attrValues |> lib.findSingle (user: user.primary) null null;
+    system.primaryUser = primaryUser.name;
     users.knownUsers = usernames;
 
     users.users = mapUsers (
