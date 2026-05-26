@@ -1,9 +1,9 @@
 {
   config,
+  keys,
   lib,
   mkModule,
   pkgs,
-  keys,
   ...
 }:
 let
@@ -19,13 +19,6 @@ let
     "video"
     "audio"
     "gamemode"
-  ];
-
-  authorizedKeys = [
-    keys.blackstar.root
-    keys.blackstar.luna
-    keys.crona.root
-    keys.crona.luna
   ];
 
   mapUsers =
@@ -104,7 +97,7 @@ mkModule {
       index: user: {
         description = user.fullName;
         shell = pkgs.bashInteractive;
-        openssh.authorizedKeys.keys = authorizedKeys;
+        openssh.authorizedKeys.keys = keys.all;
       }
     );
 

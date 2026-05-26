@@ -17,6 +17,10 @@
     splash = true;
   };
 
+  soul.system.root = {
+    password = "${self}/nix/secrets/crona/password.age";
+  };
+
   soul.system.users.luna = {
     email = "luna@toodeluna.net";
     firstName = "Luna";
