@@ -35,6 +35,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    extersia-pkgs = {
+      # url = "github:extersia-org/pkgs";
+      url = "github:toodeluna/extersia-pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,6 +49,11 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
     };
 
     home-manager = {
@@ -72,7 +83,7 @@
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.flake-utils.inputs.systems.follows = "systems";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.lix.follows = "lix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -96,11 +107,7 @@
 
     tangled = {
       url = "git+https://tangled.org/tangled.org/core";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    tgirlpkgs = {
-      url = "github:tgirlcloud/pkgs";
+      inputs.gomod2nix.inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -173,6 +173,26 @@
         "type": "github"
       }
     },
+    "extersia-pkgs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779774987,
+        "narHash": "sha256-U3/jmEzI00tQdxFWfIpnllRGUqxKQIZjW2KLSAXYWbs=",
+        "owner": "toodeluna",
+        "repo": "extersia-pkgs",
+        "rev": "9b839c976a7bf8e88571bd6798e83ad8ba2b6ba9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "toodeluna",
+        "repo": "extersia-pkgs",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -271,24 +291,6 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "flakey-profile": {
       "locked": {
         "lastModified": 1712898590,
@@ -306,7 +308,9 @@
     },
     "gomod2nix": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "tangled",
           "nixpkgs"
@@ -496,7 +500,9 @@
     },
     "lix-module": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "flakey-profile": "flakey-profile",
         "lix": [
           "lix"
@@ -634,8 +640,10 @@
         "darwin": "darwin_2",
         "disko": "disko",
         "easy-hosts": "easy-hosts",
+        "extersia-pkgs": "extersia-pkgs",
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "homebrew": "homebrew",
         "homebrew-bundle": "homebrew-bundle",
@@ -649,7 +657,6 @@
         "quoteit": "quoteit",
         "systems": "systems",
         "tangled": "tangled",
-        "tgirlpkgs": "tgirlpkgs",
         "treefmt": "treefmt",
         "zen-browser": "zen-browser"
       }
@@ -699,21 +706,6 @@
         "type": "github"
       }
     },
-    "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
     "tangled": {
       "inputs": {
         "actor-typeahead-src": "actor-typeahead-src",
@@ -744,26 +736,6 @@
       "original": {
         "type": "git",
         "url": "https://tangled.org/tangled.org/core"
-      }
-    },
-    "tgirlpkgs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1779156107,
-        "narHash": "sha256-h1Zkpth1aKFMlY/SiTHqeYVfKuRWLM7pL735iarSy3Y=",
-        "owner": "tgirlcloud",
-        "repo": "pkgs",
-        "rev": "4b858bc409fc42581048278ec1936119162df4c2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tgirlcloud",
-        "repo": "pkgs",
-        "type": "github"
       }
     },
     "treefmt": {

@@ -14,18 +14,18 @@ let
       inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.default
       inputs.disko.nixosModules.default
+      inputs.extersia-pkgs.nixosModules.default
       inputs.home-manager.nixosModules.default
       inputs.nixpkgs.nixosModules.readOnlyPkgs
       inputs.tangled.nixosModules.knot
-      inputs.tgirlpkgs.nixosModules.default
     ];
 
     darwin = [
       inputs.agenix.darwinModules.default
+      inputs.extersia-pkgs.darwinModules.default
       inputs.home-manager.darwinModules.default
       inputs.homebrew.darwinModules.default
       inputs.oomf-time.darwinModules.default
-      inputs.tgirlpkgs.darwinModules.default
     ];
   };
 

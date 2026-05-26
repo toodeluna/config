@@ -25,8 +25,8 @@
       sharedModules = [
         config.soul.system.home
         inputs.catppuccin.homeModules.default
+        inputs.extersia-pkgs.homeModules.default
         inputs.nixvim.homeModules.default
-        inputs.tgirlpkgs.homeModules.default
         inputs.zen-browser.homeModules.default
       ];
     };
