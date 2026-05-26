@@ -11,7 +11,6 @@ let
     inputs.extersia-pkgs.overlays.default
     inputs.firefox-addons.overlays.default
     inputs.lix-module.overlays.default
-    inputs.quoteit.overlays.default
     inputs.self.overlays.default
   ];
 in

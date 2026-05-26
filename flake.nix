@@ -100,11 +100,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quoteit = {
-      url = "git+https://tangled.org/isabelroses.com/quoteit";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     tangled = {
       url = "git+https://tangled.org/tangled.org/core";
       inputs.gomod2nix.inputs.flake-utils.follows = "flake-utils";
