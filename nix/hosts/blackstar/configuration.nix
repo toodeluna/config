@@ -4,12 +4,10 @@
     amdcpu.enable = true;
   };
 
-  soul.system.boot = {
-    loader = "grub";
-  };
-
-  soul.system.root = {
-    password = "${self}/nix/secrets/blackstar/password.age";
+  soul.system = {
+    domain = "toodeluna.net";
+    boot.loader = "grub";
+    root.password = "${self}/nix/secrets/blackstar/password.age";
   };
 
   soul.system.users.luna = {
@@ -35,7 +33,7 @@
 
     server = {
       owner = config.soul.system.users.luna.did;
-      hostname = "knot.toodeluna.net";
+      hostname = config.lib.soul.mkSubdomain "knot";
     };
   };
 

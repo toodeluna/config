@@ -2,6 +2,7 @@
   imports = [
     ./boot.nix
     ./directories.nix
+    ./domain.nix
     ./home.nix
     ./locale.nix
     ./packages.nix
