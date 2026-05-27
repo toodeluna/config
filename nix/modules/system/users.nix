@@ -9,7 +9,6 @@
 let
   cfg = config.soul.system.users;
   usernames = lib.mapAttrsToList (name: value: value.name) cfg;
-  primaryUser = cfg |> builtins.attrValues |> lib.findSingle (user: user.primary) null null;
 
   existingGroups = lib.mapAttrsToList (name: value: value.name) config.users.groups;
   doesGroupExist = name: builtins.elem name existingGroups;
@@ -99,6 +98,13 @@ mkModule {
     type = lib.types.attrsOf user;
   };
 
+  shared.config.lib.soul = {
+    primaryUser =
+      lib.findSingle (user: user.primary) (throw "no primary user is defined")
+        (throw "more than one primary user is defined")
+        (builtins.attrValues cfg);
+  };
+
   shared.config = {
     users.users = mapUsers (
       index: user: {
@@ -132,7 +138,7 @@ mkModule {
   };
 
   darwin.config = {
-    system.primaryUser = primaryUser.name;
+    system.primaryUser = config.lib.soul.primaryUser.name;
     users.knownUsers = usernames;
 
     users.users = mapUsers (

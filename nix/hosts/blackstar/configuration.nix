@@ -11,6 +11,7 @@
   };
 
   soul.system.users.luna = {
+    primary = true;
     email = "luna@toodeluna.net";
     firstName = "Luna";
     lastName = "Heyman";
@@ -20,7 +21,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "luna@toodeluna.net";
+    defaults.email = config.lib.soul.primaryUser.email;
   };
 
   services.tangled.knot = {
@@ -32,7 +33,7 @@
     };
 
     server = {
-      owner = config.soul.system.users.luna.did;
+      owner = config.lib.soul.primaryUser.did;
       hostname = config.lib.soul.mkSubdomain "knot";
     };
   };
