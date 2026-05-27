@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: gwennlbh/to-tangled@v0.5
+      - uses: toodeluna/to-tangled@86e06bd41bdf19932d668f5d46128eb485e25cd1
         with:
           knot: knot.toodeluna.net
           repo: toodeluna.net/config
