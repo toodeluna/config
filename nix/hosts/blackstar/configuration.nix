@@ -16,6 +16,7 @@
     email = "luna@toodeluna.net";
     firstName = "Luna";
     lastName = "Heyman";
+    did = "did:plc:5odpemgsnxty3zbaahu77rhv";
     password = "${self}/nix/secrets/blackstar/password.age";
   };
 
@@ -33,7 +34,7 @@
     };
 
     server = {
-      owner = "did:plc:5odpemgsnxty3zbaahu77rhv";
+      owner = config.soul.system.users.luna.did;
       hostname = "knot.toodeluna.net";
     };
   };

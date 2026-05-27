@@ -76,6 +76,13 @@ let
           example = ./password.age;
           type = lib.types.path;
         };
+
+        did = lib.mkOption {
+          default = null;
+          description = "The atproto did of the user.";
+          example = "did:plc:5odpemgsnxty3zbaahu77rhv";
+          type = lib.types.nullOr lib.types.str;
+        };
       };
 
       config = {
