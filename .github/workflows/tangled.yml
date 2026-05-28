@@ -1,5 +1,5 @@
 name: tangled
-run-name: Push repository to Tangled
+run-name: Pushing repository to Tangled
 on: push
 
 permissions:
@@ -8,10 +8,11 @@ permissions:
 
 jobs:
   tangled:
+    name: Push repository to Tangled
     runs-on: ubuntu-latest
 
     steps:
-      - uses: toodeluna/to-tangled@86e06bd41bdf19932d668f5d46128eb485e25cd1
+      - uses: gwennlbh/to-tangled@v0.6
         with:
           knot: knot.toodeluna.net
           repo: toodeluna.net/config
