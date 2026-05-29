@@ -42,6 +42,7 @@ in
   catppuccin = {
     inherit (osConfig.catppuccin) enable flavor accent;
     sources.palette = osConfig.catppuccin.sources.palette;
+    anki.enable = false;
     mpv.enable = false;
   };
 
