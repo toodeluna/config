@@ -24,6 +24,7 @@
 
       sharedModules = [
         config.soul.system.home
+        inputs.agenix.homeManagerModules.default
         inputs.catppuccin.homeModules.default
         inputs.extersia-pkgs.homeModules.default
         inputs.nixvim.homeModules.default

@@ -57,6 +57,32 @@ in
     };
   };
 
+  programs.anki = {
+    enable = true;
+
+    profiles.${user.name} = {
+      default = true;
+
+      sync = {
+        url = "https://anki.toodeluna.net";
+        keyFile = config.age.secrets."anki/key".path;
+        autoSync = true;
+        syncMedia = true;
+        username = user.name;
+      };
+    };
+  };
+
+  age = {
+    secretsDir = "${config.home.homeDirectory}/.local/state/agenix";
+    secretsMountPoint = "${config.home.homeDirectory}/.local/state/agenix.d";
+    identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
+
+    secrets = {
+      "anki/key".file = "${self}/nix/secrets/crona/anki/key.age";
+    };
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

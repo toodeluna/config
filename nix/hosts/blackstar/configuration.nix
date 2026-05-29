@@ -1,4 +1,9 @@
-{ config, self, ... }:
+{
+  config,
+  lib,
+  self,
+  ...
+}:
 {
   soul.hardware = {
     amdcpu.enable = true;
@@ -22,6 +27,20 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = config.lib.soul.primaryUser.email;
+  };
+
+  age.secrets = {
+    "anki/luna".file = "${self}/nix/secrets/blackstar/anki/luna.age";
+  };
+
+  services.anki-sync-server = {
+    enable = true;
+    address = "0.0.0.0";
+
+    users = lib.singleton {
+      username = "luna";
+      passwordFile = config.age.secrets."anki/luna".path;
+    };
   };
 
   services.tangled.knot = {
@@ -52,6 +71,16 @@
 
       locations."/" = {
         proxyPass = "http://${config.services.tangled.knot.server.listenAddr}";
+        proxyWebsockets = true;
+      };
+    };
+
+    virtualHosts."${config.lib.soul.mkSubdomain "anki"}" = {
+      enableACME = true;
+      forceSSL = true;
+
+      locations."/" = {
+        proxyPass = "http://${config.services.anki-sync-server.address}:${toString config.services.anki-sync-server.port}";
         proxyWebsockets = true;
       };
     };
