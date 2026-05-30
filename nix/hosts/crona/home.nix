@@ -1,6 +1,7 @@
 {
   colors,
   config,
+  inputs,
   lib,
   osConfig,
   pkgs,
@@ -241,166 +242,29 @@ in
     enable = true;
     package = null;
 
-    # TODO: Remove this when Hyprland 0.55 is on nixos-unstable.
-    configType = "hyprlang";
-
-    settings = {
-      general = {
-        layout = "master";
-
-        gaps_in = 5;
-        gaps_out = 10;
-
-        border_size = 2;
-        resize_on_border = true;
-
-        "col.active_border" = "$mauve";
-        "col.inactive_border" = "$overlay0";
-      };
-
-      decoration = {
-        rounding = 6;
-        rounding_power = 3;
-
-        blur = {
-          enabled = true;
-          passes = 2;
-          size = 5;
-          vibrancy = 0.15;
+    extraConfig =
+      let
+        keyboard = {
+          inherit (osConfig.services.xserver.xkb) layout options;
         };
 
-        shadow = {
-          color = "rgba($crustAlphaaa)";
-          enabled = true;
-          range = 6;
-          render_power = 3;
+        packages = {
+          xwayland_satellite = lib.getExe pkgs.xwayland-satellite;
+          zen = lib.getExe config.programs.zen-browser.package;
+          wl_copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+          quickshell = lib.getExe pkgs.quickshell;
+          kitty = lib.getExe pkgs.kitty;
+          rofi = lib.getExe pkgs.rofi;
+          hyprshot = lib.getExe pkgs.hyprshot;
+          hyprpicker = lib.getExe pkgs.hyprpicker;
         };
-      };
+      in
+      ''
+        local xkb = ${lib.generators.toLua { } keyboard}
+        local packages = ${lib.generators.toLua { } packages}
 
-      input = {
-        kb_layout = osConfig.services.xserver.xkb.layout;
-        kb_options = osConfig.services.xserver.xkb.options;
-
-        sensitivity = 0;
-        follow_mouse = true;
-        touchpad.natural_scroll = true;
-      };
-
-      misc = {
-        disable_hyprland_logo = true;
-        force_default_wallpaper = false;
-      };
-
-      animations = {
-        enabled = true;
-
-        bezier = [
-          "linear, 0, 0, 1, 1"
-          "easeOut, 0.23, 1, 0.32, 1"
-          "easeInOut, 0.28, 0.09, 0.59, 1"
-        ];
-
-        animation = [
-          "global, true, 5, default"
-          "border, true, 4, easeOut"
-          "fade, true, 4, easeOut"
-          "windows, true, 4, easeOut"
-          "windowsIn, true, 4, easeOut, slide bottom"
-          "windowsOut, true, 4, easeOut, gnomed"
-          "workspaces, true, 1.9, easeInOut"
-          "workspacesIn, true, 1.9, easeInOut, slide"
-          "workspacesOut, true, 1.9, easeInOut, slide"
-        ];
-      };
-
-      xwayland = {
-        enabled = false;
-      };
-
-      env = [
-        "DISPLAY,:2"
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-      ];
-
-      exec-once = [
-        "${lib.getExe pkgs.xwayland-satellite} :2"
-        "${lib.getExe pkgs.quickshell}"
-      ];
-
-      bind = [
-        "super, return, exec, ${lib.getExe pkgs.kitty}"
-        "super, space, exec, ${lib.getExe pkgs.rofi} -show drun"
-        "super, b, exec, ${lib.getExe config.programs.zen-browser.package}"
-        "super, s, exec, ${lib.getExe pkgs.hyprshot} --mode region --clipboard-only"
-        "super, c, exec, ${lib.getExe pkgs.hyprpicker} | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
-
-        "super, q, killactive"
-        "super shift, q, exit"
-
-        "super, f, togglefloating"
-        "super shift, f, fullscreen"
-
-        "super, h, movefocus, l"
-        "super, j, movefocus, d"
-        "super, k, movefocus, u"
-        "super, l, movefocus, r"
-
-        "super shift, h, movewindow, l"
-        "super shift, j, movewindow, d"
-        "super shift, k, movewindow, u"
-        "super shift, l, movewindow, r"
-
-        "super, 1, workspace, 1"
-        "super, 2, workspace, 2"
-        "super, 3, workspace, 3"
-        "super, 4, workspace, 4"
-        "super, 5, workspace, 5"
-        "super, 6, workspace, 6"
-        "super, 7, workspace, 7"
-        "super, 8, workspace, 8"
-        "super, 9, workspace, 9"
-        "super, 0, workspace, 10"
-
-        "super shift, 1, movetoworkspace, 1"
-        "super shift, 2, movetoworkspace, 2"
-        "super shift, 3, movetoworkspace, 3"
-        "super shift, 4, movetoworkspace, 4"
-        "super shift, 5, movetoworkspace, 5"
-        "super shift, 6, movetoworkspace, 6"
-        "super shift, 7, movetoworkspace, 7"
-        "super shift, 8, movetoworkspace, 8"
-        "super shift, 9, movetoworkspace, 9"
-        "super shift, 0, movetoworkspace, 10"
-
-        "alt, tab, workspace, previous"
-      ];
-
-      bindm = [
-        "super, mouse:272, movewindow"
-        "super, mouse:273, resizewindow"
-      ];
-
-      windowrule = [
-        {
-          name = "fix-xwayland-drags";
-          no_focus = true;
-
-          "match:class" = "^$";
-          "match:float" = true;
-          "match:fullscreen" = false;
-          "match:pin" = false;
-          "match:title" = "^$";
-          "match:xwayland" = true;
-        }
-        {
-          name = "suppress-maximize-events";
-          suppress_event = "maximize";
-
-          "match:class" = ".*";
-        }
-      ];
-    };
+        ${builtins.readFile "${self}/cfg/hypr/hyprland.lua"}
+      '';
   };
 
   xdg.configFile."quickshell.json".text = builtins.toJSON {

@@ -12,7 +12,7 @@ BarItem {
     readonly property var inactiveColor: Config.theme.overlay0
 
     function focusWorkspace(name) {
-        Hyprland.dispatch(`workspace ${name}`);
+        Hyprland.dispatch(`hl.dsp.focus({ workspace = "${name}" })`);
     }
 
     Repeater {

@@ -68,6 +68,7 @@
       cssls.enable = true;
       eslint.enable = true;
       html.enable = true;
+      lua_ls.enable = true;
       nixd.enable = true;
       svelte.enable = true;
       tailwindcss.enable = true;
@@ -114,6 +115,7 @@
       json = [ "prettierd" ];
       jsonc = [ "prettierd" ];
       just = [ "just" ];
+      lua = [ "stylua" ];
       nix = [ "nixfmt" ];
       qml = [ "qmlformat" ];
       rust = [ "rustfmt" ];
@@ -134,6 +136,7 @@
       prettierd.command = lib.getExe pkgs.prettierd;
       qmlformat.command = lib.getExe' pkgs.kdePackages.qtdeclarative "qmlformat";
       rustfmt.command = lib.getExe pkgs.rustfmt;
+      stylua.command = lib.getExe pkgs.stylua;
     };
 
     settings.formatters.shfmt = {
@@ -162,6 +165,7 @@
       javascript
       json
       just
+      lua
       markdown
       nix
       qmljs
