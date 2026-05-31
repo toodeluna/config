@@ -72,6 +72,12 @@ in
       arch = "aarch64";
     };
 
+    hosts.tsubaki = {
+      path = "${self}/nix/hosts/tsubaki";
+      class = "nixos";
+      arch = "x86_64";
+    };
+
     shared = {
       specialArgs = { inherit self inputs; };
       modules = modules.shared;

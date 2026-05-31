@@ -19,4 +19,9 @@ with import ./keys.nix;
     crona.root
     crona.luna
   ];
+
+  "tsubaki/password.age".publicKeys = [
+    tsubaki.root
+    tsubaki.luna
+  ];
 }
