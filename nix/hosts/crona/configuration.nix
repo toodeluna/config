@@ -34,6 +34,7 @@
 
   soul.system.packages = {
     inherit (pkgs) spotify qbittorrent signal-desktop;
+    inherit (pkgs.kdePackages) kdenlive;
   };
 
   programs.dconf.enable = true;

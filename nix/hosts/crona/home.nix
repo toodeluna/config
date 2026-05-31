@@ -1,7 +1,6 @@
 {
   colors,
   config,
-  inputs,
   lib,
   osConfig,
   pkgs,
@@ -32,6 +31,12 @@ in
   gtk = {
     enable = true;
     colorScheme = "dark";
+  };
+
+  qt = {
+    enable = true;
+    style.name = "kvantum";
+    platformTheme.name = "kvantum";
   };
 
   home.pointerCursor = {
