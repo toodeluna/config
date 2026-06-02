@@ -105,6 +105,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    topology = {
+      url = "github:oddlama/nix-topology";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -18,6 +18,7 @@ let
       inputs.home-manager.nixosModules.default
       inputs.nixpkgs.nixosModules.readOnlyPkgs
       inputs.tangled.nixosModules.knot
+      inputs.topology.nixosModules.default
     ];
 
     darwin = [

@@ -12,6 +12,7 @@ let
     inputs.firefox-addons.overlays.default
     inputs.lix-module.overlays.default
     inputs.self.overlays.default
+    inputs.topology.overlays.default
   ];
 in
 {

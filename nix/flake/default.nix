@@ -8,6 +8,7 @@
     ./overlays.nix
     ./packages.nix
     ./systems.nix
+    ./topology.nix
     ./treefmt.nix
   ];
 }
